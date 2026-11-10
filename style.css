@@ -1,109 +1,333 @@
+/* ===== 1. CSS variables (page colours) ===== */
 :root {
-  --bg: #130f26; --panel: #1e1840; --ink: #f4f0ff; --muted: #b3abd6;
-  --brand: #ffb627; --line: #3b336e; --radius: 16px;
-  --body: "Nunito Sans", Arial, sans-serif;
-  --display: "Yatra One", Georgia, serif;
+  --bg: #130f26;
+  --panel: #1e1840;
+  --text: #f4f0ff;
+  --muted: #b3abd6;
+  --brand: #ffb627;
+  --line: #3b336e;
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.5; }
-h1, h2 { font-family: var(--display); font-weight: 400; margin: 0 0 12px; }
-a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
 
-/* header */
-.site-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding: 14px clamp(16px, 4vw, 40px); border-bottom: 1px solid var(--line); }
-.logo { font-family: var(--display); font-size: 1.4rem; color: var(--brand); text-decoration: none; }
-.site-header nav { display: flex; gap: 22px; }
-.site-header nav a { color: var(--ink); text-decoration: none; padding: 4px 0; border-bottom: 2px solid transparent; transition: border-color .2s; }
-.site-header nav a:hover { border-color: var(--brand); }
-
-/* layout (Grid) */
-main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 40px; display: grid; gap: 28px; }
-.hero { text-align: center; }
-.hero h1 { font-size: clamp(1.8rem, 5vw, 3rem); line-height: 1.15; }
-.hero p { color: var(--muted); margin: 0; }
-.layout { display: grid; grid-template-columns: minmax(300px, 1fr) minmax(300px, 1fr); gap: 28px; align-items: start; }
-.panel { background: var(--panel); padding: 20px; border-radius: var(--radius); }
-.hint { font-size: .9rem; color: var(--muted); }
-
-/* form controls */
-fieldset { border: 1px solid var(--line); border-radius: 12px; margin: 0 0 16px; padding: 12px 14px 16px; }
-legend { font-weight: 700; padding: 0 8px; color: var(--brand); }
-label { font-weight: 700; }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { position: relative; display: block; cursor: pointer; color: var(--ink); text-decoration: none; }
-.chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-.chip span, a.chip { display: inline-flex; align-items: center; gap: 6px; padding: 7px 15px; border: 2px solid var(--line); border-radius: 999px; font-weight: 700; transition: background .2s, color .2s, border-color .2s; }
-label.chip { padding: 0; border: 0; }
-.chip:hover span, a.chip:hover { border-color: var(--brand); }
-.chip:has(input:checked) span { background: var(--brand); color: #1a1233; border-color: var(--brand); }
-.chip:has(input:focus-visible) span { outline: 3px solid #fff; outline-offset: 2px; }
-.dot { width: 14px; height: 14px; border-radius: 50%; border: 1px solid #888; }
-.dot.gold { background: #ffd166; } .dot.white { background: #fff; } .dot.pink { background: #ff8fb1; } .dot.mint { background: #8fffd0; }
-.check { display: flex; align-items: center; gap: 8px; margin-top: 12px; font-weight: 400; }
-textarea { display: block; width: 100%; margin: 6px 0 14px; padding: 10px 12px; background: var(--bg); color: var(--ink); border: 2px solid var(--line); border-radius: 10px; font: inherit; transition: border-color .2s; }
-textarea:focus { border-color: var(--brand); outline: none; }
-textarea:invalid { border-color: #ff8a8a; }
-
-/* buttons */
-button, .btn { display: inline-block; padding: 10px 20px; border: 2px solid var(--brand); border-radius: 999px; background: var(--brand); color: #1a1233; font: inherit; font-weight: 700; text-decoration: none; cursor: pointer; transition: transform .15s; }
-button:hover, .btn:hover { transform: translateY(-2px); }
-.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
-.ghost:hover { border-color: var(--brand); }
-.actions { display: flex; flex-wrap: wrap; gap: 10px; }
-
-/* card */
-.stage { position: sticky; top: 16px; }
-.card {
-  --c1: #2a0a4a; --c2: #c2410c; --text: #fff3c4; --accent: #ffd166;
-  position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 14px;
-  aspect-ratio: 4 / 5; max-width: 460px; margin: 0 auto; padding: 36px 28px 60px; text-align: center;
-  color: var(--text); background: linear-gradient(160deg, var(--c1), var(--c2));
-  border: 6px solid var(--accent); border-radius: 20px; box-shadow: 0 24px 60px rgba(0, 0, 0, .5);
+/* ===== 2. Basic reset and page style ===== */
+* {
+  box-sizing: border-box;
 }
-.face { display: none; flex-direction: column; align-items: center; gap: 12px; scroll-margin-top: 90px; }
-.face h3 { margin: 0; font-size: clamp(2rem, 6vw, 2.7rem); line-height: 1.1; color: var(--accent); }
-.face p { margin: 0; overflow-wrap: anywhere; }
-.face .to { font-size: 1.2rem; font-weight: 700; }
-.face .msg { font-size: 1.35rem; max-width: 28ch; }
-.face .from { margin-top: 8px; font-style: italic; }
-[contenteditable]:hover { outline: 2px dashed rgba(255, 255, 255, .5); outline-offset: 4px; }
-[contenteditable]:focus { outline: 2px solid var(--accent); outline-offset: 4px; }
-.custom { width: 100%; max-width: 30ch; min-height: 2.6em; margin: 0; padding: 8px 12px; border: 2px dashed var(--accent); border-radius: 12px; font-size: 1rem; overflow-wrap: anywhere; }
-.custom:empty::before { content: attr(data-placeholder); opacity: .7; }
-.deco { position: absolute; font-size: 2.2rem; animation: float 4s ease-in-out infinite; }
-.d1 { top: 14px; left: 18px; } .d2 { top: 18px; right: 20px; animation-delay: 1s; } .d3 { bottom: 14px; left: 18px; animation-delay: 2s; }
-@keyframes float { 50% { transform: translateY(-10px); } }
 
-/* ---- interactivity with CSS only: :target (festival link), :has + :checked (style options) ---- */
-#maker:not(:has(.face:target)) .face-diwali, .face:target { display: flex; }
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Nunito Sans", Arial, sans-serif;
+  line-height: 1.5;
+}
 
-#maker:has(#holi:target) .card { --c1: #be185d; --c2: #6d28d9; --text: #fff; }
-#maker:has(#eid:target) .card { --c1: #064e3b; --c2: #0f766e; --text: #fef3c7; }
-#maker:has(#christmas:target) .card { --c1: #7f1d1d; --c2: #166534; --text: #fff; }
-#maker:has(#newyear:target) .card { --c1: #0f172a; --c2: #1d4ed8; --text: #e0f2fe; }
-#maker:has(#rakhi:target) .card { --c1: #9a3412; --c2: #be185d; --text: #fff7ed; }
+h1,
+h2 {
+  font-family: "Yatra One", Georgia, serif;
+  font-weight: normal;
+  margin-top: 0;
+}
 
-#maker:not(:has(.face:target)) a[href="#diwali"], #maker:has(#diwali:target) a[href="#diwali"],
-#maker:has(#holi:target) a[href="#holi"], #maker:has(#eid:target) a[href="#eid"],
-#maker:has(#christmas:target) a[href="#christmas"], #maker:has(#newyear:target) a[href="#newyear"],
-#maker:has(#rakhi:target) a[href="#rakhi"] { background: var(--brand); color: #1a1233; border-color: var(--brand); }
+a:focus,
+button:focus,
+textarea:focus {
+  outline: 3px solid var(--brand);
+}
 
-#maker:has(#a-white:checked) .card { --accent: #fff; }
-#maker:has(#a-pink:checked) .card { --accent: #ff8fb1; }
-#maker:has(#a-mint:checked) .card { --accent: #8fffd0; }
-#maker:has(#look-classic:checked) .face h3, #maker:has(#look-classic:checked) .face .msg { font-family: var(--display); font-weight: 400; }
-#maker:has(#look-playful:checked) .face h3 { font-family: "Baloo 2", cursive; font-weight: 800; }
-#maker:has(#look-playful:checked) .face .msg { font-family: "Baloo 2", cursive; font-weight: 600; }
-#maker:has(#deco:not(:checked)) .deco { display: none; }
+/* ===== 3. Header (Flexbox) ===== */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 14px 30px;
+  border-bottom: 1px solid var(--line);
+}
 
-footer { text-align: center; padding: 16px; color: var(--muted); font-size: .9rem; }
+.logo {
+  font-family: "Yatra One", Georgia, serif;
+  font-size: 24px;
+  color: var(--brand);
+  text-decoration: none;
+}
 
-@media (max-width: 800px) { .layout { grid-template-columns: 1fr; } .stage { position: static; } }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .deco { animation: none; } * { transition: none !important; } }
-@media print {
-  body { background: #fff; }
-  .site-header, .hero, .controls, #share, footer { display: none; }
-  .layout { display: block; } .stage { position: static; } .custom:empty { display: none; } .custom { border-style: solid; }
-  .card { box-shadow: none; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+.site-header nav a {
+  color: var(--text);
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.site-header nav a:hover {
+  color: var(--brand);
+}
+
+/* ===== 4. Main area and layout (Grid) ===== */
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-size: 40px;
+}
+
+.hero p {
+  color: var(--muted);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+.panel {
+  background-color: var(--panel);
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.hint {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ===== 5. Festival buttons ===== */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  padding: 8px 16px;
+  border: 2px solid var(--line);
+  border-radius: 30px;
+  color: var(--text);
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.chip:hover {
+  background-color: var(--brand);
+  color: #1a1233;
+  border-color: var(--brand);
+}
+
+/* ===== 6. Greeting cards ===== */
+/* Every card has its own colours stored in variables (see section 7) */
+.face {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  min-height: 480px;
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 40px 28px;
+  text-align: center;
+  color: var(--card-text);
+  background: linear-gradient(160deg, var(--c1), var(--c2));
+  border: 6px solid var(--accent);
+  border-radius: 20px;
+}
+
+.face h3 {
+  margin: 0;
+  font-family: "Yatra One", Georgia, serif;
+  font-size: 40px;
+  font-weight: normal;
+  color: var(--accent);
+}
+
+.face p {
+  margin: 0;
+}
+
+.to {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.msg {
+  font-family: "Yatra One", Georgia, serif;
+  font-size: 22px;
+}
+
+.from {
+  font-style: italic;
+}
+
+/* The dashed box where the user can write anything */
+.note {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px dashed var(--accent);
+  border-radius: 12px;
+}
+
+.face h3:hover,
+.face p:hover {
+  outline: 2px dashed white;
+}
+
+/* Emojis in the corners (Positioning) */
+.deco {
+  position: absolute;
+  font-size: 34px;
+  animation: float 4s infinite;
+}
+
+.deco-1 {
+  top: 14px;
+  left: 18px;
+}
+
+.deco-2 {
+  top: 14px;
+  right: 18px;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* ===== 7. Colours of each festival (CSS variables) ===== */
+.face-diwali {
+  --c1: #2a0a4a;
+  --c2: #c2410c;
+  --card-text: #fff3c4;
+  --accent: #ffd166;
+}
+
+.face-holi {
+  --c1: #be185d;
+  --c2: #6d28d9;
+  --card-text: #ffffff;
+  --accent: #ffd6e7;
+}
+
+.face-eid {
+  --c1: #064e3b;
+  --c2: #0f766e;
+  --card-text: #fef3c7;
+  --accent: #fde68a;
+}
+
+.face-christmas {
+  --c1: #7f1d1d;
+  --c2: #166534;
+  --card-text: #ffffff;
+  --accent: #fecaca;
+}
+
+.face-newyear {
+  --c1: #0f172a;
+  --c2: #1d4ed8;
+  --card-text: #e0f2fe;
+  --accent: #fde68a;
+}
+
+.face-rakhi {
+  --c1: #9a3412;
+  --c2: #be185d;
+  --card-text: #fff7ed;
+  --accent: #fcd34d;
+}
+
+/* ===== 8. Which card is visible? ===== */
+/* Diwali shows by default */
+.face-diwali {
+  display: flex;
+}
+
+/* The card whose id is in the web address (#holi, #eid ...) is shown */
+.face:target {
+  display: flex;
+}
+
+/* If another card is chosen, hide Diwali.
+   "~" selects later siblings, so Diwali must come last in the HTML. */
+.face:target ~ .face-diwali {
+  display: none;
+}
+
+/* ===== 9. Share section ===== */
+label {
+  font-weight: bold;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  margin: 8px 0 14px 0;
+  padding: 10px;
+  background-color: var(--bg);
+  color: var(--text);
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+button,
+.button {
+  padding: 10px 20px;
+  background-color: var(--brand);
+  color: #1a1233;
+  border: 2px solid var(--brand);
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.outline {
+  background-color: transparent;
+  color: var(--text);
+  border-color: var(--line);
+}
+
+button:hover,
+.button:hover {
+  border-color: white;
+}
+
+footer {
+  text-align: center;
+  padding: 16px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ===== 10. Responsive design ===== */
+@media (max-width: 800px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
 }
