@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Pick a festival, edit the card text and share it on WhatsApp, X or email.">
+  <title>Festival Greeting Card Maker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito+Sans:wght@400;700&family=Yatra+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="./">Festival Card Maker</a>
+    <nav aria-label="Page sections">
+      <a href="#maker">Design</a>
+      <a href="#share">Share</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Make a festival card. Send it in a minute.</h1>
+      <p>Pick a festival, click the card to write your wish, then share it.</p>
+    </section>
+
+    <div id="maker" class="layout">
+      <div class="panel controls">
+        <h2>Design your card</h2>
+
+        <fieldset>
+          <legend>Festival (each one has its own shareable link)</legend>
+          <nav class="chips" aria-label="Festivals">
+            <a class="chip" href="#diwali">Diwali</a>
+            <a class="chip" href="#holi">Holi</a>
+            <a class="chip" href="#eid">Eid</a>
+            <a class="chip" href="#christmas">Christmas</a>
+            <a class="chip" href="#newyear">New Year</a>
+            <a class="chip" href="#rakhi">Raksha Bandhan</a>
+          </nav>
+        </fieldset>
+
+        <fieldset>
+          <legend>Font style</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="look" id="look-classic" checked><span>Classic</span></label>
+            <label class="chip"><input type="radio" name="look" id="look-playful"><span>Playful</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Accent colour</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="accent" id="a-gold" checked><span><i class="dot gold"></i>Gold</span></label>
+            <label class="chip"><input type="radio" name="accent" id="a-white"><span><i class="dot white"></i>White</span></label>
+            <label class="chip"><input type="radio" name="accent" id="a-pink"><span><i class="dot pink"></i>Pink</span></label>
+            <label class="chip"><input type="radio" name="accent" id="a-mint"><span><i class="dot mint"></i>Mint</span></label>
+          </div>
+          <label class="check"><input type="checkbox" id="deco" checked> Festive decorations</label>
+        </fieldset>
+
+        <p class="hint">Click any text on the card to edit it. Use the dashed box at the bottom of the card to write anything you like: a joke, a memory, an inside line or a personal note. It stays when you switch festivals.</p>
+      </div>
+
+      <div class="stage">
+        <article class="card" aria-label="Greeting card preview">
+          <div class="face face-diwali" id="diwali">
+            <span class="deco d1" aria-hidden="true">🪔</span><span class="deco d2" aria-hidden="true">✨</span><span class="deco d3" aria-hidden="true">🪔</span>
+            <h3 contenteditable="true" spellcheck="false">Happy Diwali</h3>
+            <p class="to" contenteditable="true">Dear Friend,</p>
+            <p class="msg" contenteditable="true">May the festival of lights fill your home with joy, prosperity and warmth.</p>
+            <p class="from" contenteditable="true">With love, Your Name</p>
+          </div>
+          <div class="face face-holi" id="holi">
+            <span class="deco d1" aria-hidden="true">🎨</span><span class="deco d2" aria-hidden="true">💦</span><span class="deco d3" aria-hidden="true">🎨</span>
+            <h3 contenteditable="true" spellcheck="false">Happy Holi</h3>
+            <p class="to" contenteditable="true">Dear Friend,</p>
+            <p class="msg" contenteditable="true">May your life be as colourful as the festival of colours. Enjoy every shade!</p>
+            <p class="from" contenteditable="true">With love, Your Name</p>
+          </div>
+          <div class="face face-eid" id="eid">
+            <span class="deco d1" aria-hidden="true">🌙</span><span class="deco d2" aria-hidden="true">⭐</span><span class="deco d3" aria-hidden="true">🌙</span>
+            <h3 contenteditable="true" spellcheck="false">Eid Mubarak</h3>
+            <p class="to" contenteditable="true">Dear Friend,</p>
+            <p class="msg" contenteditable="true">Wishing you peace, happiness and blessings on this beautiful day.</p>
+            <p class="from" contenteditable="true">With love, Your Name</p>
+          </div>
+          <div class="face face-christmas" id="christmas">
+            <span class="deco d1" aria-hidden="true">🎄</span><span class="deco d2" aria-hidden="true">🎁</span><span class="deco d3" aria-hidden="true">❄️</span>
+            <h3 contenteditable="true" spellcheck="false">Merry Christmas</h3>
+            <p class="to" contenteditable="true">Dear Friend,</p>
+            <p class="msg" contenteditable="true">Wishing you a season full of love, laughter and cozy moments.</p>
+            <p class="from" contenteditable="true">With love, Your Name</p>
+          </div>
+          <div class="face face-newyear" id="newyear">
+            <span class="deco d1" aria-hidden="true">🎆</span><span class="deco d2" aria-hidden="true">🎉</span><span class="deco d3" aria-hidden="true">🎇</span>
+            <h3 contenteditable="true" spellcheck="false">Happy New Year</h3>
+            <p class="to" contenteditable="true">Dear Friend,</p>
+            <p class="msg" contenteditable="true">Here's to new goals, new memories and a year better than the last.</p>
+            <p class="from" contenteditable="true">With love, Your Name</p>
+          </div>
+          <div class="face face-rakhi" id="rakhi">
+            <span class="deco d1" aria-hidden="true">🎀</span><span class="deco d2" aria-hidden="true">💛</span><span class="deco d3" aria-hidden="true">🎀</span>
+            <h3 contenteditable="true" spellcheck="false">Happy Raksha Bandhan</h3>
+            <p class="to" contenteditable="true">Dear Brother/Sister,</p>
+            <p class="msg" contenteditable="true">A bond of love that no distance can break. Happy Rakhi!</p>
+            <p class="from" contenteditable="true">With love, Your Name</p>
+          </div>
+          <p class="custom" contenteditable="true" role="textbox" aria-label="Custom note: write anything" data-placeholder="Write anything here..."></p>
+        </article>
+      </div>
+    </div>
+
+    <section id="share" class="panel" aria-labelledby="share-title">
+      <h2 id="share-title">Share your card</h2>
+      <form method="get" target="_blank">
+        <label for="share-text">Custom share message</label>
+        <textarea id="share-text" name="text" rows="3" maxlength="200" required>Happy festival! Make your own greeting card here: https://YOUR-USERNAME.github.io/greeting-card-maker/</textarea>
+        <div class="actions">
+          <button type="submit" formaction="https://wa.me/">Send on WhatsApp</button>
+          <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">Post on X</button>
+          <a class="btn ghost" href="mailto:?subject=Festival%20greeting%20card&amp;body=Make%20your%20own%20greeting%20card%20here%3A%20https%3A%2F%2FYOUR-USERNAME.github.io%2Fgreeting-card-maker%2F">Send by email</a>
+        </div>
+      </form>
+      <p class="hint">Festival links: after choosing a festival, copy the address bar. It ends with #diwali, #holi and so on, and opens that festival's card for anyone.</p>
+      <p class="hint">Save as PDF or image: press Ctrl + P and choose "Save as PDF". Only the card is printed.</p>
+    </section>
+  </main>
+
+  <footer><p>CSE326 Internet Programming &middot; CA2 Project &middot; HTML5 and CSS3</p></footer>
+</body>
+</html>
