@@ -37,7 +37,7 @@ a:focus-visible, button:focus-visible, textarea:focus-visible {
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-  padding: 14px 32px;
+  padding: 4px 10px;
   background-color: var(--navy);
 }
 
