@@ -1,333 +1,333 @@
-/* ===== 1. CSS variables (page colours) ===== */
+/* ===== 1. CSS variables ===== */
 :root {
-  --bg: #130f26;
-  --panel: #1e1840;
-  --text: #f4f0ff;
-  --muted: #b3abd6;
-  --brand: #ffb627;
-  --line: #3b336e;
+  --bg: #f6f2ea;
+  --panel: #ffffff;
+  --ink: #26233a;
+  --muted: #6c6882;
+  --brand: #d9480f;
+  --brand-dark: #a63a0c;
+  --navy: #1f1b4d;
+  --line: #e6dfd2;
+  --radius: 16px;
 }
 
-/* ===== 2. Basic reset and page style ===== */
-* {
-  box-sizing: border-box;
-}
+/* ===== 2. Reset and base ===== */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
   background-color: var(--bg);
-  color: var(--text);
+  color: var(--ink);
   font-family: "Nunito Sans", Arial, sans-serif;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
-h1,
-h2 {
-  font-family: "Yatra One", Georgia, serif;
-  font-weight: normal;
-  margin-top: 0;
-}
+h1, h2, h3 { font-family: "Yatra One", Georgia, serif; font-weight: normal; margin-top: 0; }
 
-a:focus,
-button:focus,
-textarea:focus {
+a:focus-visible, button:focus-visible, textarea:focus-visible {
   outline: 3px solid var(--brand);
+  outline-offset: 2px;
 }
 
-/* ===== 3. Header (Flexbox) ===== */
+/* ===== 3. Header and banner ===== */
 .site-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 14px 30px;
-  border-bottom: 1px solid var(--line);
+  gap: 10px;
+  padding: 14px 32px;
+  background-color: var(--navy);
 }
 
 .logo {
   font-family: "Yatra One", Georgia, serif;
   font-size: 24px;
-  color: var(--brand);
+  color: #ffd166;
   text-decoration: none;
 }
 
 .site-header nav a {
-  color: var(--text);
+  color: #ffffff;
   text-decoration: none;
-  margin-left: 20px;
+  margin-left: 22px;
+  font-weight: bold;
 }
 
-.site-header nav a:hover {
-  color: var(--brand);
-}
-
-/* ===== 4. Main area and layout (Grid) ===== */
-main {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 24px 16px;
-}
+.site-header nav a:hover { color: #ffd166; }
 
 .hero {
   text-align: center;
-  margin-bottom: 24px;
+  padding: 44px 16px 64px;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--navy), #5b2a86 60%, #c2410c);
 }
 
-.hero h1 {
-  font-size: 40px;
-}
+.hero h1 { font-size: 40px; margin-bottom: 8px; }
+.hero p { margin: 0 auto; max-width: 560px; color: #e6e1ff; }
 
-.hero p {
-  color: var(--muted);
-}
-
-.layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
-  margin-bottom: 28px;
+/* ===== 4. Main layout ===== */
+main {
+  max-width: 1080px;
+  margin: -34px auto 0;
+  padding: 0 16px 30px;
 }
 
 .panel {
   background-color: var(--panel);
-  padding: 20px;
-  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 14px rgba(40, 30, 70, 0.08);
 }
 
-.hint {
-  font-size: 14px;
-  color: var(--muted);
+.panel h2 { font-size: 26px; margin-bottom: 4px; }
+.sub { color: var(--muted); margin: 0 0 18px; }
+.hint { font-size: 14px; color: var(--muted); margin: 10px 0 0; }
+
+/* ===== 5. Festival tiles (Grid) ===== */
+.group { margin-bottom: 16px; }
+
+.group h3 {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 2px 12px;
+  font-size: 15px;
+  color: var(--brand-dark);
+  background-color: #fdeee4;
+  border-radius: 20px;
 }
 
-/* ===== 5. Festival buttons ===== */
-.chips {
-  display: flex;
-  flex-wrap: wrap;
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 10px;
 }
 
-.chip {
-  padding: 8px 16px;
-  border: 2px solid var(--line);
-  border-radius: 30px;
-  color: var(--text);
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 12px 6px;
+  background-color: #fbf9f4;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  color: var(--ink);
+  font-size: 14px;
   font-weight: bold;
+  text-align: center;
   text-decoration: none;
-  transition: background-color 0.3s, color 0.3s;
+  transition: transform 0.2s, border-color 0.2s, background-color 0.2s;
 }
 
-.chip:hover {
-  background-color: var(--brand);
-  color: #1a1233;
+.tile span { font-size: 26px; }
+
+.tile:hover {
+  transform: translateY(-3px);
   border-color: var(--brand);
+  background-color: #fff4ec;
 }
 
-/* ===== 6. Greeting cards ===== */
-/* Every card has its own colours stored in variables (see section 7) */
+/* ===== 6. Card area and sidebar ===== */
+.layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.stage { min-width: 0; }
+.side { order: -1; margin-bottom: 0; position: sticky; top: 16px; }
+
+/* ===== 7. Greeting cards ===== */
 .face {
   display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 14px;
   position: relative;
   overflow: hidden;
-  min-height: 480px;
-  max-width: 440px;
+  min-height: 470px;
+  max-width: 460px;
   margin: 0 auto;
-  padding: 40px 28px;
+  padding: 46px 32px;
   text-align: center;
   color: var(--card-text);
   background: linear-gradient(160deg, var(--c1), var(--c2));
-  border: 6px solid var(--accent);
+  border: 8px solid var(--accent);
   border-radius: 20px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.2);
+  scroll-margin-top: 16px;
 }
 
-.face h3 {
-  margin: 0;
-  font-family: "Yatra One", Georgia, serif;
-  font-size: 40px;
-  font-weight: normal;
-  color: var(--accent);
+.face::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1.5px solid var(--accent);
+  border-radius: 12px;
+  opacity: 0.45;
+  pointer-events: none;
 }
 
-.face p {
-  margin: 0;
+.face h3 { margin: 0; font-size: 36px; line-height: 1.2; color: var(--accent); }
+.face p { margin: 0; }
+.to { font-size: 18px; font-weight: bold; }
+.msg { font-family: "Yatra One", Georgia, serif; font-size: 21px; line-height: 1.5; }
+.from { font-style: italic; }
+
+.face h3:hover, .face p:hover { outline: 2px dashed rgba(255, 255, 255, 0.7); outline-offset: 4px; }
+
+.deco { position: absolute; font-size: 30px; animation: float 4s ease-in-out infinite; }
+.d1 { top: 18px; left: 22px; }
+.d2 { top: 18px; right: 22px; animation-delay: 1s; }
+.d3 { bottom: 18px; left: 50%; margin-left: -15px; animation-delay: 2s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
-.to {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.msg {
-  font-family: "Yatra One", Georgia, serif;
-  font-size: 22px;
-}
-
-.from {
+.custom {
+  max-width: 460px;
+  min-height: 50px;
+  margin: 16px auto 0;
+  padding: 10px 14px;
+  background-color: #ffffff;
+  border: 2px dashed var(--brand);
+  border-radius: 12px;
+  text-align: center;
   font-style: italic;
 }
 
-/* The dashed box where the user can write anything */
-.note {
-  width: 100%;
-  padding: 8px 12px;
-  border: 2px dashed var(--accent);
-  border-radius: 12px;
-}
+.custom:empty::before { content: attr(data-placeholder); color: var(--muted); }
 
-.face h3:hover,
-.face p:hover {
-  outline: 2px dashed white;
-}
+/* ===== 8. Colours of each festival (CSS variables) ===== */
+.face-diwali       { --c1: #3b0f5c; --c2: #c2410c; --card-text: #fff3c4; --accent: #ffd166; }
+.face-holi         { --c1: #be185d; --c2: #6d28d9; --card-text: #ffffff; --accent: #ffd6e7; }
+.face-rakhi        { --c1: #9a3412; --c2: #be185d; --card-text: #fff7ed; --accent: #fcd34d; }
+.face-navratri     { --c1: #991b1b; --c2: #d97706; --card-text: #fff7ed; --accent: #fde68a; }
+.face-dussehra     { --c1: #7c2d12; --c2: #ea580c; --card-text: #fff7ed; --accent: #fde047; }
+.face-janmashtami  { --c1: #1e3a8a; --c2: #0e7490; --card-text: #ecfeff; --accent: #fde68a; }
+.face-durga        { --c1: #9f1239; --c2: #c2410c; --card-text: #fff1f2; --accent: #fecdd3; }
+.face-ganesh       { --c1: #b45309; --c2: #be123c; --card-text: #fffbeb; --accent: #fcd34d; }
+.face-lohri        { --c1: #7f1d1d; --c2: #f97316; --card-text: #fffbeb; --accent: #fed7aa; }
+.face-pongal       { --c1: #166534; --c2: #ca8a04; --card-text: #fefce8; --accent: #fef08a; }
+.face-onam         { --c1: #14532d; --c2: #b45309; --card-text: #fffbeb; --accent: #fde68a; }
+.face-eidfitr      { --c1: #064e3b; --c2: #0f766e; --card-text: #fef3c7; --accent: #fde68a; }
+.face-eidadha      { --c1: #134e4a; --c2: #1e3a8a; --card-text: #f0fdfa; --accent: #fde68a; }
+.face-gurpurab     { --c1: #1e3a8a; --c2: #d97706; --card-text: #ffffff; --accent: #ffedd5; }
+.face-baisakhi     { --c1: #a16207; --c2: #15803d; --card-text: #fffbeb; --accent: #fef08a; }
+.face-buddha       { --c1: #78350f; --c2: #a16207; --card-text: #fffbeb; --accent: #fde68a; }
+.face-mahavir      { --c1: #7c2d12; --c2: #be185d; --card-text: #fff7ed; --accent: #fed7aa; }
+.face-christmas    { --c1: #7f1d1d; --c2: #166534; --card-text: #ffffff; --accent: #fecaca; }
+.face-easter       { --c1: #7c3aed; --c2: #db2777; --card-text: #ffffff; --accent: #fef3c7; }
+.face-newyear      { --c1: #0f172a; --c2: #1d4ed8; --card-text: #e0f2fe; --accent: #fde68a; }
+.face-independence { --c1: #ea580c; --c2: #15803d; --card-text: #ffffff; --accent: #ffffff; }
+.face-republic     { --c1: #1e3a8a; --c2: #ea580c; --card-text: #ffffff; --accent: #fef3c7; }
 
-/* Emojis in the corners (Positioning) */
-.deco {
-  position: absolute;
-  font-size: 34px;
-  animation: float 4s infinite;
-}
+/* ===== 9. Which card is visible? ===== */
+.face.active { display: flex; }
 
-.deco-1 {
-  top: 14px;
-  left: 18px;
-}
-
-.deco-2 {
-  top: 14px;
-  right: 18px;
-}
-
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
-}
-
-/* ===== 7. Colours of each festival (CSS variables) ===== */
-.face-diwali {
-  --c1: #2a0a4a;
-  --c2: #c2410c;
-  --card-text: #fff3c4;
-  --accent: #ffd166;
-}
-
-.face-holi {
-  --c1: #be185d;
-  --c2: #6d28d9;
-  --card-text: #ffffff;
-  --accent: #ffd6e7;
-}
-
-.face-eid {
-  --c1: #064e3b;
-  --c2: #0f766e;
-  --card-text: #fef3c7;
-  --accent: #fde68a;
-}
-
-.face-christmas {
-  --c1: #7f1d1d;
-  --c2: #166534;
-  --card-text: #ffffff;
-  --accent: #fecaca;
-}
-
-.face-newyear {
-  --c1: #0f172a;
-  --c2: #1d4ed8;
-  --card-text: #e0f2fe;
-  --accent: #fde68a;
-}
-
-.face-rakhi {
-  --c1: #9a3412;
-  --c2: #be185d;
-  --card-text: #fff7ed;
-  --accent: #fcd34d;
-}
-
-/* ===== 8. Which card is visible? ===== */
-/* Diwali shows by default */
-.face-diwali {
-  display: flex;
-}
-
-/* The card whose id is in the web address (#holi, #eid ...) is shown */
-.face:target {
-  display: flex;
-}
-
-/* If another card is chosen, hide Diwali.
-   "~" selects later siblings, so Diwali must come last in the HTML. */
-.face:target ~ .face-diwali {
-  display: none;
-}
-
-/* ===== 9. Share section ===== */
-label {
-  font-weight: bold;
-}
+/* ===== 10. Share section ===== */
+label { font-weight: bold; }
 
 textarea {
   display: block;
   width: 100%;
-  margin: 8px 0 14px 0;
+  margin: 8px 0 14px;
   padding: 10px;
-  background-color: var(--bg);
-  color: var(--text);
-  border: 2px solid var(--line);
+  background-color: #fffdf8;
+  color: var(--ink);
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.actions { display: flex; flex-direction: column; gap: 10px; }
+
+button, .btn {
+  display: block;
+  padding: 10px 20px;
+  background-color: var(--brand);
+  color: #ffffff;
+  border: 2px solid var(--brand);
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: inherit;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover, .btn:hover { background-color: var(--brand-dark); border-color: var(--brand-dark); }
+.ghost { background-color: transparent; color: var(--brand); }
+.ghost:hover { color: #ffffff; }
+
+.steps { margin: 0 0 18px; padding-left: 20px; font-size: 15px; }
+
+footer {
+  text-align: center;
+  padding: 18px;
+  color: var(--muted);
+  font-size: 14px;
+  border-top: 1px solid var(--line);
+}
+
+/* ===== 11. Responsive design ===== */
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .side { position: static; }
+  .hero h1 { font-size: 28px; }
+  .site-header { padding: 12px 16px; }
+}
+
+/* ===== 12. Print: only the card ===== */
+@media print {
+  .site-header, .hero, .festivals, .side, footer { display: none; }
+  .layout { display: block; }
+  body { background: #ffffff; }
+  main { margin: 0; }
+  .deco { animation: none; }
+  .face, .custom { box-shadow: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* ===== 13. Dropdown, festival info and Instagram ===== */
+select {
+  display: block;
+  width: 100%;
+  margin: 6px 0 14px;
+  padding: 10px 12px;
+  background-color: #fffdf8;
+  color: var(--ink);
+  border: 1.5px solid var(--line);
   border-radius: 10px;
   font-size: 16px;
   font-family: inherit;
 }
 
-.buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+.about {
+  margin-bottom: 20px;
+  padding: 12px 14px;
+  background-color: #fdeee4;
+  border-left: 5px solid var(--brand);
+  border-radius: 10px;
 }
 
-button,
-.button {
-  padding: 10px 20px;
-  background-color: var(--brand);
-  color: #1a1233;
-  border: 2px solid var(--brand);
-  border-radius: 30px;
-  font-size: 16px;
-  font-weight: bold;
-  font-family: inherit;
-  text-decoration: none;
-  cursor: pointer;
+.about strong { color: var(--brand-dark); }
+.about p { margin: 4px 0 0; font-size: 14px; }
+.tight { margin: 0 0 8px; }
+
+.insta {
+  background: linear-gradient(45deg, #f09433, #dc2743 55%, #bc1888);
+  border-color: #dc2743;
 }
 
-.outline {
-  background-color: transparent;
-  color: var(--text);
-  border-color: var(--line);
-}
-
-button:hover,
-.button:hover {
-  border-color: white;
-}
-
-footer {
-  text-align: center;
-  padding: 16px;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-/* ===== 10. Responsive design ===== */
-@media (max-width: 800px) {
-  .layout {
-    grid-template-columns: 1fr;
-  }
-
-  .hero h1 {
-    font-size: 30px;
-  }
-}
+.insta:hover { opacity: 0.9; background: linear-gradient(45deg, #f09433, #dc2743 55%, #bc1888); border-color: #dc2743; }
