@@ -8,7 +8,10 @@
   --brand-dark: #a63a0c;
   --navy: #1f1b4d;
   --line: #e6dfd2;
+  --field: #fffdf8;
+  --soft: #fdeee4;
   --radius: 16px;
+  --card-w: 460px;
 }
 
 /* ===== 2. Reset and base ===== */
@@ -25,7 +28,7 @@ body {
 
 h1, h2, h3 { font-family: "Yatra One", Georgia, serif; font-weight: normal; margin-top: 0; }
 
-a:focus-visible, button:focus-visible, textarea:focus-visible {
+a:focus-visible, button:focus-visible, select:focus-visible {
   outline: 3px solid var(--brand);
   outline-offset: 2px;
 }
@@ -37,16 +40,21 @@ a:focus-visible, button:focus-visible, textarea:focus-visible {
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-  padding: 4px 10px;
+  padding: 12px 32px;
   background-color: var(--navy);
 }
 
+.brand { display: flex; flex-direction: column; text-decoration: none; }
+
 .logo {
   font-family: "Yatra One", Georgia, serif;
-  font-size: 24px;
+  font-size: 26px;
+  line-height: 1.2;
   color: #ffd166;
   text-decoration: none;
 }
+
+.tagline { font-size: 13px; font-style: italic; color: #e6e1ff; }
 
 .site-header nav a {
   color: #ffffff;
@@ -71,7 +79,7 @@ a:focus-visible, button:focus-visible, textarea:focus-visible {
 main {
   max-width: 1080px;
   margin: -34px auto 0;
-  padding: 0 16px 30px;
+  padding: 0 16px 40px;
 }
 
 .panel {
@@ -86,52 +94,8 @@ main {
 .panel h2 { font-size: 26px; margin-bottom: 4px; }
 .sub { color: var(--muted); margin: 0 0 18px; }
 .hint { font-size: 14px; color: var(--muted); margin: 10px 0 0; }
+.tight { margin: 0 0 8px; }
 
-/* ===== 5. Festival tiles (Grid) ===== */
-.group { margin-bottom: 16px; }
-
-.group h3 {
-  display: inline-block;
-  margin-bottom: 8px;
-  padding: 2px 12px;
-  font-size: 15px;
-  color: var(--brand-dark);
-  background-color: #fdeee4;
-  border-radius: 20px;
-}
-
-.tiles {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 10px;
-}
-
-.tile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  padding: 12px 6px;
-  background-color: #fbf9f4;
-  border: 1.5px solid var(--line);
-  border-radius: 12px;
-  color: var(--ink);
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  transition: transform 0.2s, border-color 0.2s, background-color 0.2s;
-}
-
-.tile span { font-size: 26px; }
-
-.tile:hover {
-  transform: translateY(-3px);
-  border-color: var(--brand);
-  background-color: #fff4ec;
-}
-
-/* ===== 6. Card area and sidebar ===== */
 .layout {
   display: grid;
   grid-template-columns: 360px 1fr;
@@ -140,9 +104,17 @@ main {
 }
 
 .stage { min-width: 0; }
-.side { order: -1; margin-bottom: 0; position: sticky; top: 16px; }
 
-/* ===== 7. Greeting cards ===== */
+.side {
+  order: -1;
+  margin-bottom: 0;
+  position: sticky;
+  top: 16px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+}
+
+/* ===== 5. Greeting cards ===== */
 .face {
   display: none;
   flex-direction: column;
@@ -152,7 +124,7 @@ main {
   position: relative;
   overflow: hidden;
   min-height: 470px;
-  max-width: 460px;
+  max-width: var(--card-w);
   margin: 0 auto;
   padding: 46px 32px;
   text-align: center;
@@ -161,7 +133,6 @@ main {
   border: 8px solid var(--accent);
   border-radius: 20px;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.2);
-  scroll-margin-top: 16px;
 }
 
 .face::before {
@@ -182,6 +153,19 @@ main {
 
 .face h3:hover, .face p:hover { outline: 2px dashed rgba(255, 255, 255, 0.7); outline-offset: 4px; }
 
+/* Personal note: written inside the card, so it is saved with the card */
+.note {
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 10px;
+  font-size: 16px;
+  font-style: italic;
+  border: 1.5px dashed currentColor;
+  border-radius: 10px;
+}
+
+.note:empty::before { content: attr(data-placeholder); opacity: 0.65; }
+
 .deco { position: absolute; font-size: 30px; animation: float 4s ease-in-out infinite; }
 .d1 { top: 18px; left: 22px; }
 .d2 { top: 18px; right: 22px; animation-delay: 1s; }
@@ -192,21 +176,7 @@ main {
   50% { transform: translateY(-8px); }
 }
 
-.custom {
-  max-width: 460px;
-  min-height: 50px;
-  margin: 16px auto 0;
-  padding: 10px 14px;
-  background-color: #ffffff;
-  border: 2px dashed var(--brand);
-  border-radius: 12px;
-  text-align: center;
-  font-style: italic;
-}
-
-.custom:empty::before { content: attr(data-placeholder); color: var(--muted); }
-
-/* ===== 8. Colours of each festival (CSS variables) ===== */
+/* Colours of each festival */
 .face-diwali       { --c1: #3b0f5c; --c2: #c2410c; --card-text: #fff3c4; --accent: #ffd166; }
 .face-holi         { --c1: #be185d; --c2: #6d28d9; --card-text: #ffffff; --accent: #ffd6e7; }
 .face-rakhi        { --c1: #9a3412; --c2: #be185d; --card-text: #fff7ed; --accent: #fcd34d; }
@@ -230,27 +200,58 @@ main {
 .face-independence { --c1: #ea580c; --c2: #15803d; --card-text: #ffffff; --accent: #ffffff; }
 .face-republic     { --c1: #1e3a8a; --c2: #ea580c; --card-text: #ffffff; --accent: #fef3c7; }
 
-/* ===== 9. Which card is visible? ===== */
+/* Which card is visible? Only the chosen one. */
 .face.active { display: flex; }
 
-/* ===== 10. Share section ===== */
+/* ===== 6. Nothing chosen yet ===== */
+.empty { display: none; }
+
+body.no-festival .empty {
+  display: block;
+  max-width: var(--card-w);
+  margin: 0 auto;
+  padding: 70px 24px;
+  text-align: center;
+  background-color: var(--panel);
+  border: 2px dashed var(--brand);
+  border-radius: 20px;
+}
+
+.empty .big { font-size: 54px; }
+.empty h2 { margin-bottom: 6px; }
+.empty p { margin: 0; color: var(--muted); }
+
+body.no-festival .about,
+body.no-festival .editnote { display: none; }
+
+/* ===== 7. Sidebar: select and about ===== */
 label { font-weight: bold; }
 
-textarea {
+select {
   display: block;
   width: 100%;
-  margin: 8px 0 14px;
-  padding: 10px;
-  background-color: #fffdf8;
+  margin: 6px 0 14px;
+  padding: 10px 12px;
+  background-color: var(--field);
   color: var(--ink);
   border: 1.5px solid var(--line);
   border-radius: 10px;
-  font-size: 15px;
+  font-size: 16px;
   font-family: inherit;
 }
 
-.actions { display: flex; flex-direction: column; gap: 10px; }
+.about {
+  margin-bottom: 20px;
+  padding: 12px 14px;
+  background-color: var(--soft);
+  border-left: 5px solid var(--brand);
+  border-radius: 10px;
+}
 
+.about strong { color: var(--brand-dark); }
+.about p { margin: 4px 0 0; font-size: 14px; }
+
+/* ===== 8. Buttons ===== */
 button, .btn {
   display: block;
   padding: 10px 20px;
@@ -271,63 +272,105 @@ button:hover, .btn:hover { background-color: var(--brand-dark); border-color: va
 .ghost { background-color: transparent; color: var(--brand); }
 .ghost:hover { color: #ffffff; }
 
-.steps { margin: 0 0 18px; padding-left: 20px; font-size: 15px; }
+.save { background-color: #15803d; border-color: #15803d; }
+.save:hover { background-color: #116530; border-color: #116530; }
 
-footer {
-  text-align: center;
-  padding: 18px;
-  color: var(--muted);
+/* ===== 9. Save bar (appears under the card after editing) ===== */
+.savebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: var(--card-w);
+  margin: 16px auto 0;
+  padding: 12px 16px;
+  background-color: #e8f7ee;
+  border: 1.5px solid #15803d;
+  border-radius: 14px;
+  color: #14532d;
   font-size: 14px;
-  border-top: 1px solid var(--line);
+  font-weight: bold;
 }
 
-/* ===== 11. Responsive design ===== */
+.savebar[hidden] { display: none; }
+
+/* ===== 10. Your Card (saved cards with share links) ===== */
+.yourcard { margin: 24px 0 0; }
+.yourcard[hidden] { display: none; }
+.saved-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 18px; }
+.saved-item { display: flex; flex-direction: column; gap: 8px; }
+.share-title { margin: 0; font-size: 14px; font-weight: bold; color: var(--muted); }
+.saved-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.saved-actions .btn, .saved-actions button { flex: 1 1 auto; padding: 5px 10px; font-size: 13px; }
+
+.face.mini {
+  display: flex;
+  max-width: none;
+  min-height: 290px;
+  padding: 34px 14px 38px;
+  gap: 8px;
+  border-width: 5px;
+}
+
+.mini h3 { font-size: 22px; }
+.mini .to, .mini .msg { font-size: 14px; }
+.mini .from, .mini .note { font-size: 13px; }
+.mini .deco { font-size: 18px; animation: none; }
+
+/* Saved cards and shared links show the note without the dashed box */
+.mini .note, body.view-mode .note { min-height: 0; padding: 0; border: none; }
+.mini .note:empty, body.view-mode .note:empty { display: none; }
+
+/* ===== 11. Someone opens a shared link ===== */
+.viewcta { display: none; max-width: var(--card-w); margin: 20px auto 0; text-align: center; }
+.viewcta p { margin: 0 0 10px; color: var(--muted); }
+.viewcta .btn { display: inline-block; }
+
+body.view-mode .side,
+body.view-mode .savebar,
+body.view-mode .yourcard,
+body.view-mode .empty { display: none; }
+
+body.view-mode .layout { grid-template-columns: 1fr; }
+body.view-mode .viewcta { display: block; }
+body.view-mode .face h3:hover, body.view-mode .face p:hover { outline: none; }
+
+/* ===== 12. Small message ===== */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 30;
+  transform: translate(-50%, 20px);
+  padding: 10px 18px;
+  border-radius: 24px;
+  background-color: #1f1b4d;
+  color: #ffffff;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ===== 13. Responsive design ===== */
 @media (max-width: 900px) {
   .layout { grid-template-columns: 1fr; }
-  .side { position: static; }
+  .side { position: static; max-height: none; }
   .hero h1 { font-size: 28px; }
   .site-header { padding: 12px 16px; }
 }
 
-/* ===== 12. Print: only the card ===== */
+/* ===== 14. Print: only the card ===== */
 @media print {
-  .site-header, .hero, .festivals, .side, footer { display: none; }
+  .site-header, .hero, .side, .savebar, .yourcard, .viewcta, .toast, .empty, footer { display: none !important; }
   .layout { display: block; }
   body { background: #ffffff; }
   main { margin: 0; }
   .deco { animation: none; }
-  .face, .custom { box-shadow: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .note { border: none; }
+  .note:empty { display: none; }
+  .face { box-shadow: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
-
-/* ===== 13. Dropdown, festival info and Instagram ===== */
-select {
-  display: block;
-  width: 100%;
-  margin: 6px 0 14px;
-  padding: 10px 12px;
-  background-color: #fffdf8;
-  color: var(--ink);
-  border: 1.5px solid var(--line);
-  border-radius: 10px;
-  font-size: 16px;
-  font-family: inherit;
-}
-
-.about {
-  margin-bottom: 20px;
-  padding: 12px 14px;
-  background-color: #fdeee4;
-  border-left: 5px solid var(--brand);
-  border-radius: 10px;
-}
-
-.about strong { color: var(--brand-dark); }
-.about p { margin: 4px 0 0; font-size: 14px; }
-.tight { margin: 0 0 8px; }
-
-.insta {
-  background: linear-gradient(45deg, #f09433, #dc2743 55%, #bc1888);
-  border-color: #dc2743;
-}
-
-.insta:hover { opacity: 0.9; background: linear-gradient(45deg, #f09433, #dc2743 55%, #bc1888); border-color: #dc2743; }
