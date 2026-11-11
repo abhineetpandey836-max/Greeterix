@@ -10,12 +10,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Yatra+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="no-festival">
   <header class="site-header">
-    <a class="logo" href="./">Festival Card Maker</a>
+    <a class="brand" href="./">
+      <span class="logo">Greeting Card</span>
+      <span class="tagline">A card is small, but the warmth inside it travels far.</span>
+    </a>
     <nav aria-label="Page sections">
       <a href="#maker">Your Card</a>
-      <a href="#share">Share</a>
     </nav>
   </header>
 
@@ -28,7 +30,14 @@
 
     <div id="maker" class="layout">
       <div class="stage">
-        <article class="card" aria-label="Greeting card preview">
+
+        <div class="empty">
+          <div class="big" aria-hidden="true">🎊</div>
+          <h2>Choose a festival to begin</h2>
+          <p>Pick a festival from the dropdown and your greeting card will appear here.</p>
+        </div>
+
+        <article class="card" aria-label="Greeting card">
 
           <div class="face face-diwali" id="diwali">
             <span class="deco d1" aria-hidden="true">🪔</span><span class="deco d2" aria-hidden="true">✨</span><span class="deco d3" aria-hidden="true">🪔</span>
@@ -206,14 +215,35 @@
             <p class="from" contenteditable="true">With love, Your Name</p>
           </div>
 
-          <p class="custom" contenteditable="true" role="textbox" aria-label="Custom note: write anything" data-placeholder="Write your personal note here..."></p>
         </article>
+
+        <!-- Appears right under the card as soon as the card is changed -->
+        <div class="savebar" id="savebar" hidden>
+          <span>You changed the card. Save it to get a link you can share.</span>
+          <button type="button" id="save" class="save">💾 Save card</button>
+        </div>
+
+        <!-- Shown when someone opens a shared link -->
+        <div class="viewcta">
+          <p>Someone sent you this greeting card.</p>
+          <a class="btn" href="./">Make your own card</a>
+        </div>
+
+        <!-- Saved cards live here, with their share links -->
+        <section id="yourcard" class="panel yourcard" hidden>
+          <h2>Your Card</h2>
+          <p class="sub">Your saved cards stay in this browser. Share any card as a link.</p>
+          <div id="saved-list" class="saved-grid"></div>
+          <p class="hint">Instagram does not allow posting from a website. The button copies your message and opens Instagram. Take a screenshot of the card to post it as a story or post.</p>
+          <p class="hint">Save as PDF: press Ctrl + P and choose "Save as PDF". Only the card is printed.</p>
+        </section>
       </div>
 
-      <aside id="share" class="panel side" aria-labelledby="pick-title">
+      <aside id="options" class="panel side" aria-labelledby="pick-title">
         <h2 id="pick-title">1. Choose a festival</h2>
         <label for="festival">Festival</label>
         <select id="festival" name="festival">
+          <option value="" selected disabled>— Choose a festival —</option>
           <optgroup label="Hindu">
             <option value="diwali">Diwali</option>
             <option value="holi">Holi</option>
@@ -253,25 +283,12 @@
           <p id="about-text"></p>
         </div>
 
-        <h2 id="share-title">2. Write and share</h2>
-        <p class="hint tight">Click any text on the card to edit it. Use the dashed box under the card for a personal note.</p>
-        <form method="get" target="_blank">
-          <label for="share-text">Share message</label>
-          <textarea id="share-text" name="text" rows="3" maxlength="200" required>Happy festival! Make your own greeting card here: https://YOUR-USERNAME.github.io/greeting-card-maker/</textarea>
-          <div class="actions">
-            <button type="submit" formaction="https://wa.me/">Send on WhatsApp</button>
-            <button type="button" id="insta" class="insta">Share on Instagram</button>
-            <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">Post on X</button>
-            <a class="btn ghost" href="mailto:?subject=Festival%20greeting%20card&amp;body=Make%20your%20own%20greeting%20card%20here%3A%20https%3A%2F%2FYOUR-USERNAME.github.io%2Fgreeting-card-maker%2F">Send by email</a>
-          </div>
-        </form>
-        <p class="hint" id="insta-note">Instagram does not allow posting from a website. The button copies your message and opens Instagram. Take a screenshot of the card to post it as a story or post.</p>
-        <p class="hint">Save as PDF: press Ctrl + P and choose "Save as PDF". Only the card is printed.</p>
+        <p class="hint editnote">Click any text on the card to edit it. Write your personal note inside the card too. A Save button will appear under the card.</p>
       </aside>
     </div>
   </main>
 
-  <footer><p>CSE326 Internet Programming &middot; CA2 Project &middot; HTML5 and CSS3</p></footer>
+  <div class="toast" id="toast"></div>
 
   <script>
     // Festival info shown under the dropdown
@@ -300,41 +317,205 @@
       republic: ["26 January 1950", "The day the Constitution of India came into effect. Celebrated with a grand parade on Kartavya Path in Delhi."]
     };
 
-    var select = document.getElementById("festival");
-    var faces = document.querySelectorAll(".face");
+    var $ = function (s, r) { return (r || document).querySelector(s); };
+    var select = $("#festival");
+    var faces = [].slice.call(document.querySelectorAll(".face"));
+    var bar = $("#savebar");
+    var saveBtn = $("#save");
+    var KEY = "greeting_cards";
+    var editing = null;
+
+    function get() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+    function put(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} }
+    function txt(f, s) { return $(s, f).textContent.trim(); }
+
+    function toast(msg) {
+      var t = $("#toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      setTimeout(function () { t.classList.remove("show"); }, 2200);
+    }
+
+    // The personal note lives inside every card, so it is saved with the card
+    faces.forEach(function (f) {
+      var n = document.createElement("p");
+      n.className = "note";
+      n.contentEditable = "true";
+      n.setAttribute("data-placeholder", "Write your personal note here...");
+      f.insertBefore(n, $(".from", f));
+    });
+
+    // ---------- 1. Show a festival (nothing until one is chosen) ----------
+    function activeFace() { return document.getElementById(select.value); }
 
     function showFestival(id) {
-      if (!about[id]) { id = "diwali"; }
-      faces.forEach(function (face) {
-        face.classList.toggle("active", face.id === id);
-      });
-      select.value = id;
-      document.getElementById("about-tag").textContent = about[id][0];
-      document.getElementById("about-text").textContent = about[id][1];
+      var has = !!about[id];
+      document.body.classList.toggle("no-festival", !has);
+      faces.forEach(function (f) { f.classList.toggle("active", has && f.id === id); });
+      select.value = has ? id : "";
+      $("#about-tag").textContent = has ? about[id][0] : "";
+      $("#about-text").textContent = has ? about[id][1] : "";
+      editing = null;
+      bar.hidden = true;
     }
 
     select.addEventListener("change", function () {
       showFestival(select.value);
-      history.replaceState(null, "", "#" + select.value);
+      if (window.innerWidth <= 900) { $(".stage").scrollIntoView({ behavior: "smooth" }); }
     });
+
+    // The save bar shows up as soon as the card is changed
+    function mark() {
+      if (!activeFace() || document.body.classList.contains("view-mode")) { return; }
+      saveBtn.textContent = editing ? "\uD83D\uDCBE Update saved card" : "\uD83D\uDCBE Save card";
+      bar.hidden = false;
+    }
+
+    $(".card").addEventListener("input", mark);
+
+    // ---------- 2. Save, and show in "Your Card" ----------
+    function currentCard() {
+      var f = activeFace();
+      return {
+        uid: editing || Date.now().toString(36),
+        id: select.value,
+        t: txt(f, "h3"), to: txt(f, ".to"), msg: txt(f, ".msg"), note: txt(f, ".note"), from: txt(f, ".from")
+      };
+    }
+
+    function fillCard(c) {
+      var f = document.getElementById(c.id);
+      $("h3", f).textContent = c.t;
+      $(".to", f).textContent = c.to;
+      $(".msg", f).textContent = c.msg;
+      $(".note", f).textContent = c.note;
+      $(".from", f).textContent = c.from;
+    }
+
+    saveBtn.addEventListener("click", function () {
+      if (!activeFace()) { return; }
+      var card = currentCard(), found = false;
+      var cards = get().map(function (x) {
+        if (x.uid === card.uid) { found = true; return card; }
+        return x;
+      });
+      if (!found) { cards.unshift(card); }
+      put(cards);
+      editing = null;
+      bar.hidden = true;
+      renderSaved();
+      toast("Card saved");
+      $("#yourcard").scrollIntoView({ behavior: "smooth" });
+    });
+
+    // ---------- 3. Share as a link ----------
+    function linkFor(c) {
+      var data = { i: c.id, t: c.t, o: c.to, m: c.msg, n: c.note, f: c.from };
+      return location.href.split("#")[0] + "#c=" + encodeURIComponent(JSON.stringify(data));
+    }
+
+    function copyLink(url) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(
+          function () { toast("Link copied"); },
+          function () { window.prompt("Copy this link:", url); }
+        );
+      } else {
+        window.prompt("Copy this link:", url);
+      }
+    }
+
+    function makeLink(text, href, cls) {
+      var a = document.createElement("a");
+      a.className = "btn " + (cls || "");
+      a.textContent = text; a.href = href; a.target = "_blank"; a.rel = "noopener";
+      return a;
+    }
+
+    function makeButton(text, cls, fn) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = cls; b.textContent = text; b.onclick = fn;
+      return b;
+    }
+
+    function renderSaved() {
+      var list = $("#saved-list"), cards = get();
+      list.innerHTML = "";
+      $("#yourcard").hidden = !cards.length;
+
+      cards.forEach(function (c) {
+        var src = document.getElementById(c.id);
+        if (!src) { return; }
+        var mini = src.cloneNode(true);
+        mini.removeAttribute("id");
+        mini.className = "face mini face-" + c.id;
+        [].forEach.call(mini.querySelectorAll("[contenteditable]"), function (e) { e.removeAttribute("contenteditable"); });
+        $("h3", mini).textContent = c.t;
+        $(".to", mini).textContent = c.to;
+        $(".msg", mini).textContent = c.msg;
+        $(".note", mini).textContent = c.note;
+        $(".from", mini).textContent = c.from;
+
+        var url = linkFor(c);
+        var share = document.createElement("div"); share.className = "saved-actions";
+        share.appendChild(makeButton("Copy link", "", function () { copyLink(url); }));
+        share.appendChild(makeLink("WhatsApp", "https://wa.me/?text=" + encodeURIComponent("A greeting card for you: " + url), "ghost"));
+        share.appendChild(makeButton("Instagram", "ghost", function () { copyLink(url); window.open("https://www.instagram.com/", "_blank"); }));
+        share.appendChild(makeLink("Facebook", "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url), "ghost"));
+        share.appendChild(makeLink("X", "https://twitter.com/intent/tweet?text=" + encodeURIComponent("A greeting card for you") + "&url=" + encodeURIComponent(url), "ghost"));
+        share.appendChild(makeLink("Email", "mailto:?subject=" + encodeURIComponent("A greeting card for you") + "&body=" + encodeURIComponent("Open your greeting card here: " + url), "ghost"));
+
+        var more = document.createElement("div"); more.className = "saved-actions";
+        more.appendChild(makeButton("Edit", "ghost", function () { openCard(c); }));
+        more.appendChild(makeButton("Delete", "ghost", function () {
+          put(get().filter(function (x) { return x.uid !== c.uid; }));
+          renderSaved();
+          toast("Card deleted");
+        }));
+
+        var label = document.createElement("p");
+        label.className = "share-title"; label.textContent = "Share with link";
+
+        var item = document.createElement("div"); item.className = "saved-item";
+        item.appendChild(mini); item.appendChild(label); item.appendChild(share); item.appendChild(more);
+        list.appendChild(item);
+      });
+    }
+
+    function openCard(c) {
+      showFestival(c.id);
+      fillCard(c);
+      editing = c.uid;
+      mark();
+      $("#maker").scrollIntoView({ behavior: "smooth" });
+    }
+
+    // ---------- 4. Someone opens a shared link ----------
+    function openSharedLink() {
+      if (location.hash.indexOf("#c=") !== 0) { return false; }
+      var d;
+      try { d = JSON.parse(decodeURIComponent(location.hash.slice(3))); } catch (e) { return false; }
+      if (!d || !about[d.i]) { return false; }
+
+      document.body.classList.add("view-mode");
+      showFestival(d.i);
+      fillCard({
+        id: d.i, t: String(d.t || ""), to: String(d.o || ""), msg: String(d.m || ""),
+        note: String(d.n || ""), from: String(d.f || "")
+      });
+      [].forEach.call(document.getElementById(d.i).querySelectorAll("[contenteditable]"), function (e) {
+        e.removeAttribute("contenteditable");
+      });
+      return true;
+    }
 
     window.addEventListener("hashchange", function () {
-      showFestival(location.hash.slice(1));
+      if (location.hash.indexOf("#c=") === 0) { location.reload(); }
     });
 
-    // Instagram has no web share link: copy the message and open Instagram
-    document.getElementById("insta").addEventListener("click", function () {
-      var text = document.getElementById("share-text").value;
-      var note = document.getElementById("insta-note");
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(text).then(function () {
-          note.textContent = "Message copied! Instagram is opening. Post a screenshot of your card there.";
-        });
-      }
-      window.open("https://www.instagram.com/", "_blank");
-    });
-
-    showFestival(location.hash.slice(1));
+    // ---------- Start ----------
+    if (!openSharedLink()) { showFestival(""); }
+    renderSaved();
   </script>
 </body>
 </html>
