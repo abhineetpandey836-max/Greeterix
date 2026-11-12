@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Pick a festival, edit the card text and share it on WhatsApp, X or email.">
-  <title>Festival Greeting Card Maker</title>
+  <meta name="description" content="Choose a festival, write your own message, save it and share it as a link.">
+  <title>Greeting Card</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Yatra+One&display=swap" rel="stylesheet">
@@ -37,6 +37,7 @@
           <p>Pick a festival from the dropdown and your greeting card will appear here.</p>
         </div>
 
+        <div class="editor">
         <article class="card" aria-label="Greeting card">
 
           <div class="face face-diwali" id="diwali">
@@ -217,10 +218,22 @@
 
         </article>
 
-        <!-- Appears right under the card as soon as the card is changed -->
+        <!-- Save option: always under the card once a festival is chosen -->
         <div class="savebar" id="savebar" hidden>
-          <span>You changed the card. Save it to get a link you can share.</span>
+          <span>Like your card? Save it, then share it with your friends.</span>
           <button type="button" id="save" class="save">💾 Save card</button>
+        </div>
+
+        <!-- Share options: appear right after saving -->
+        <div class="sharebar" id="sharebar" hidden>
+          <strong>✅ Card saved! Share it with link</strong>
+          <div id="share-buttons"></div>
+        </div>
+
+        <div class="notes">
+          <p class="hint">Instagram does not allow posting from a website. The button copies your message and opens Instagram. Take a screenshot of the card to post it as a story or post.</p>
+          <p class="hint">Save as PDF: press Ctrl + P and choose "Save as PDF". Only the card is printed.</p>
+        </div>
         </div>
 
         <!-- Shown when someone opens a shared link -->
@@ -234,8 +247,6 @@
           <h2>Your Card</h2>
           <p class="sub">Your saved cards stay in this browser. Share any card as a link.</p>
           <div id="saved-list" class="saved-grid"></div>
-          <p class="hint">Instagram does not allow posting from a website. The button copies your message and opens Instagram. Take a screenshot of the card to post it as a story or post.</p>
-          <p class="hint">Save as PDF: press Ctrl + P and choose "Save as PDF". Only the card is printed.</p>
         </section>
       </div>
 
@@ -321,6 +332,7 @@
     var select = $("#festival");
     var faces = [].slice.call(document.querySelectorAll(".face"));
     var bar = $("#savebar");
+    var shareBar = $("#sharebar");
     var saveBtn = $("#save");
     var KEY = "greeting_cards";
     var editing = null;
@@ -356,7 +368,8 @@
       $("#about-tag").textContent = has ? about[id][0] : "";
       $("#about-text").textContent = has ? about[id][1] : "";
       editing = null;
-      bar.hidden = true;
+      bar.hidden = !has;
+      shareBar.hidden = true;
     }
 
     select.addEventListener("change", function () {
@@ -368,6 +381,7 @@
     function mark() {
       if (!activeFace() || document.body.classList.contains("view-mode")) { return; }
       saveBtn.textContent = editing ? "\uD83D\uDCBE Update saved card" : "\uD83D\uDCBE Save card";
+      shareBar.hidden = true;
       bar.hidden = false;
     }
 
@@ -401,17 +415,27 @@
       });
       if (!found) { cards.unshift(card); }
       put(cards);
-      editing = null;
+      editing = card.uid;
       bar.hidden = true;
       renderSaved();
+      showShare(card);
       toast("Card saved");
-      $("#yourcard").scrollIntoView({ behavior: "smooth" });
     });
 
     // ---------- 3. Share as a link ----------
+    // Put your live GitHub Pages link here (keep the / at the end)
+    var SITE_URL = "https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/";
+
+    // On your computer (file or localhost) links use SITE_URL, so they never give 404
+    function siteBase() {
+      var here = location.href.split("#")[0];
+      var local = location.protocol === "file:" || /^https?:\/\/(localhost|127\.)/.test(here);
+      return local ? SITE_URL : here;
+    }
+
     function linkFor(c) {
       var data = { i: c.id, t: c.t, o: c.to, m: c.msg, n: c.note, f: c.from };
-      return location.href.split("#")[0] + "#c=" + encodeURIComponent(JSON.stringify(data));
+      return siteBase() + "#c=" + encodeURIComponent(JSON.stringify(data));
     }
 
     function copyLink(url) {
@@ -438,6 +462,29 @@
       return b;
     }
 
+    // All share buttons for one saved card
+    function shareButtons(c) {
+      var url = linkFor(c), msg = "A greeting card for you";
+      var box = document.createElement("div"); box.className = "saved-actions";
+      box.appendChild(makeButton("Copy link", "", function () { copyLink(url); }));
+      box.appendChild(makeLink("WhatsApp", "https://wa.me/?text=" + encodeURIComponent(msg + ": " + url), "ghost"));
+      box.appendChild(makeButton("Instagram", "ghost", function () { copyLink(url); window.open("https://www.instagram.com/", "_blank"); }));
+      box.appendChild(makeLink("Facebook", "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url), "ghost"));
+      box.appendChild(makeLink("Email", "mailto:?subject=" + encodeURIComponent(msg) + "&body=" + encodeURIComponent("Open your greeting card here: " + url), "ghost"));
+      box.appendChild(makeLink("X", "https://twitter.com/intent/tweet?text=" + encodeURIComponent(msg) + "&url=" + encodeURIComponent(url), "ghost"));
+      box.appendChild(makeLink("Snapchat", "https://www.snapchat.com/scan?attachmentUrl=" + encodeURIComponent(url), "ghost"));
+      return box;
+    }
+
+    // Right after saving: show the share buttons under the card
+    function showShare(c) {
+      var box = $("#share-buttons");
+      box.innerHTML = "";
+      box.appendChild(shareButtons(c));
+      shareBar.hidden = false;
+      shareBar.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
     function renderSaved() {
       var list = $("#saved-list"), cards = get();
       list.innerHTML = "";
@@ -456,14 +503,7 @@
         $(".note", mini).textContent = c.note;
         $(".from", mini).textContent = c.from;
 
-        var url = linkFor(c);
-        var share = document.createElement("div"); share.className = "saved-actions";
-        share.appendChild(makeButton("Copy link", "", function () { copyLink(url); }));
-        share.appendChild(makeLink("WhatsApp", "https://wa.me/?text=" + encodeURIComponent("A greeting card for you: " + url), "ghost"));
-        share.appendChild(makeButton("Instagram", "ghost", function () { copyLink(url); window.open("https://www.instagram.com/", "_blank"); }));
-        share.appendChild(makeLink("Facebook", "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url), "ghost"));
-        share.appendChild(makeLink("X", "https://twitter.com/intent/tweet?text=" + encodeURIComponent("A greeting card for you") + "&url=" + encodeURIComponent(url), "ghost"));
-        share.appendChild(makeLink("Email", "mailto:?subject=" + encodeURIComponent("A greeting card for you") + "&body=" + encodeURIComponent("Open your greeting card here: " + url), "ghost"));
+        var share = shareButtons(c);
 
         var more = document.createElement("div"); more.className = "saved-actions";
         more.appendChild(makeButton("Edit", "ghost", function () { openCard(c); }));
