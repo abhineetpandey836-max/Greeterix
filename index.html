@@ -10,7 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Yatra+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="no-festival">
+<body>
+  <!-- This page uses no JavaScript. Everything is plain HTML and CSS. -->
   <header class="site-header">
     <a class="brand" href="./">
       <span class="logo">Greeting Card</span>
@@ -38,216 +39,1140 @@
         </div>
 
         <div class="editor">
-        <article class="card" aria-label="Greeting card">
 
-          <div class="face face-diwali" id="diwali">
+        <form class="festival" id="diwali" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-diwali">
             <span class="deco d1" aria-hidden="true">🪔</span><span class="deco d2" aria-hidden="true">✨</span><span class="deco d3" aria-hidden="true">🪔</span>
-            <h3 contenteditable="true" spellcheck="false">Happy Diwali</h3>
-            <p class="to" contenteditable="true">Dear Friend,</p>
-            <p class="msg" contenteditable="true">“Light one small lamp today. Hope spreads faster than darkness ever could.”</p>
-            <p class="from" contenteditable="true">With love, Your Name</p>
+            <h3><textarea rows="1" spellcheck="false" aria-label="Card title">Happy Diwali</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="3" aria-label="Card message">“Light one small lamp today. Hope spreads faster than darkness ever could.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">With love, Your Name</textarea></p>
           </div>
 
-          <div class="face face-holi" id="holi">
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-diwali">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-diwali" class="sendbox" name="text" rows="12">🪔 Happy Diwali 🪔
+
+Dear Friend,
+“Light one small lamp today. Hope spreads faster than darkness ever could.”
+
+With love, Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#diwali</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-diwali">Card link (select it to copy)</label>
+              <input id="link-diwali" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#diwali">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23diwali">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23diwali&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23diwali">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23diwali">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23diwali">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <form class="festival" id="holi" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-holi">
             <span class="deco d1" aria-hidden="true">🎨</span><span class="deco d2" aria-hidden="true">💦</span><span class="deco d3" aria-hidden="true">🎨</span>
-            <h3 contenteditable="true" spellcheck="false">Happy Holi</h3>
-            <p class="to" contenteditable="true">Dear Friend,</p>
-            <p class="msg" contenteditable="true">“Life is a canvas, and today every colour is welcome.”</p>
-            <p class="from" contenteditable="true">With love, Your Name</p>
+            <h3><textarea rows="1" spellcheck="false" aria-label="Card title">Happy Holi</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="2" aria-label="Card message">“Life is a canvas, and today every colour is welcome.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">With love, Your Name</textarea></p>
           </div>
 
-          <div class="face face-rakhi" id="rakhi">
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-holi">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-holi" class="sendbox" name="text" rows="12">🎨 Happy Holi 🎨
+
+Dear Friend,
+“Life is a canvas, and today every colour is welcome.”
+
+With love, Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#holi</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-holi">Card link (select it to copy)</label>
+              <input id="link-holi" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#holi">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23holi">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23holi&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23holi">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23holi">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23holi">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <form class="festival" id="rakhi" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-rakhi">
             <span class="deco d1" aria-hidden="true">🎀</span><span class="deco d2" aria-hidden="true">💛</span><span class="deco d3" aria-hidden="true">🎀</span>
-            <h3 contenteditable="true" spellcheck="false">Happy Raksha Bandhan</h3>
-            <p class="to" contenteditable="true">Dear Brother/Sister,</p>
-            <p class="msg" contenteditable="true">“Some bonds need no words, only a thread, a smile and a promise.”</p>
-            <p class="from" contenteditable="true">With love, Your Name</p>
+            <h3><textarea rows="2" spellcheck="false" aria-label="Card title">Happy Raksha Bandhan</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Brother/Sister,</textarea></p>
+            <p class="msg"><textarea rows="3" aria-label="Card message">“Some bonds need no words, only a thread, a smile and a promise.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">With love, Your Name</textarea></p>
           </div>
 
-          <div class="face face-navratri" id="navratri">
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-rakhi">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-rakhi" class="sendbox" name="text" rows="12">🎀 Happy Raksha Bandhan 🎀
+
+Dear Brother/Sister,
+“Some bonds need no words, only a thread, a smile and a promise.”
+
+With love, Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#rakhi</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-rakhi">Card link (select it to copy)</label>
+              <input id="link-rakhi" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#rakhi">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23rakhi">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23rakhi&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23rakhi">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23rakhi">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23rakhi">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <form class="festival" id="navratri" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-navratri">
             <span class="deco d1" aria-hidden="true">🔱</span><span class="deco d2" aria-hidden="true">🌺</span><span class="deco d3" aria-hidden="true">🔱</span>
-            <h3 contenteditable="true" spellcheck="false">Happy Navratri</h3>
-            <p class="to" contenteditable="true">Dear Friend,</p>
-            <p class="msg" contenteditable="true">“Faith lights the nine nights, and courage carries you through all the days.”</p>
-            <p class="from" contenteditable="true">With love, Your Name</p>
+            <h3><textarea rows="1" spellcheck="false" aria-label="Card title">Happy Navratri</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="3" aria-label="Card message">“Faith lights the nine nights, and courage carries you through all the days.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">With love, Your Name</textarea></p>
           </div>
 
-          <div class="face face-dussehra" id="dussehra">
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-navratri">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-navratri" class="sendbox" name="text" rows="12">🔱 Happy Navratri 🔱
+
+Dear Friend,
+“Faith lights the nine nights, and courage carries you through all the days.”
+
+With love, Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#navratri</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-navratri">Card link (select it to copy)</label>
+              <input id="link-navratri" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#navratri">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23navratri">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23navratri&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23navratri">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23navratri">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23navratri">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <form class="festival" id="dussehra" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-dussehra">
             <span class="deco d1" aria-hidden="true">🏹</span><span class="deco d2" aria-hidden="true">🔥</span><span class="deco d3" aria-hidden="true">🏹</span>
-            <h3 contenteditable="true" spellcheck="false">Happy Dussehra</h3>
-            <p class="to" contenteditable="true">Dear Friend,</p>
-            <p class="msg" contenteditable="true">“Every Ravan inside us falls when truth and kindness stand tall.”</p>
-            <p class="from" contenteditable="true">With love, Your Name</p>
+            <h3><textarea rows="1" spellcheck="false" aria-label="Card title">Happy Dussehra</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="3" aria-label="Card message">“Every Ravan inside us falls when truth and kindness stand tall.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">With love, Your Name</textarea></p>
           </div>
 
-          <div class="face face-janmashtami" id="janmashtami">
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-dussehra">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-dussehra" class="sendbox" name="text" rows="12">🏹 Happy Dussehra 🏹
+
+Dear Friend,
+“Every Ravan inside us falls when truth and kindness stand tall.”
+
+With love, Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#dussehra</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-dussehra">Card link (select it to copy)</label>
+              <input id="link-dussehra" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#dussehra">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23dussehra">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23dussehra&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23dussehra">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23dussehra">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23dussehra">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <form class="festival" id="janmashtami" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-janmashtami">
             <span class="deco d1" aria-hidden="true">🦚</span><span class="deco d2" aria-hidden="true">🪈</span><span class="deco d3" aria-hidden="true">🦚</span>
-            <h3 contenteditable="true" spellcheck="false">Happy Janmashtami</h3>
-            <p class="to" contenteditable="true">Dear Friend,</p>
-            <p class="msg" contenteditable="true">“Do your best, let go of the rest, and keep smiling like Krishna.”</p>
-            <p class="from" contenteditable="true">With love, Your Name</p>
+            <h3><textarea rows="1" spellcheck="false" aria-label="Card title">Happy Janmashtami</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="3" aria-label="Card message">“Do your best, let go of the rest, and keep smiling like Krishna.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">With love, Your Name</textarea></p>
           </div>
 
-          <div class="face face-durga" id="durga">
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-janmashtami">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-janmashtami" class="sendbox" name="text" rows="12">🦚 Happy Janmashtami 🦚
+
+Dear Friend,
+“Do your best, let go of the rest, and keep smiling like Krishna.”
+
+With love, Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#janmashtami</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-janmashtami">Card link (select it to copy)</label>
+              <input id="link-janmashtami" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#janmashtami">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23janmashtami">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23janmashtami&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23janmashtami">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23janmashtami">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23janmashtami">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <form class="festival" id="durga" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-durga">
             <span class="deco d1" aria-hidden="true">🌺</span><span class="deco d2" aria-hidden="true">🥁</span><span class="deco d3" aria-hidden="true">🌺</span>
-            <h3 contenteditable="true" spellcheck="false">Shubho Durga Puja</h3>
-            <p class="to" contenteditable="true">Dear Friend,</p>
-            <p class="msg" contenteditable="true">“May Maa Durga give you the strength to face every storm with grace.”</p>
-            <p class="from" contenteditable="true">With love, Your Name</p>
+            <h3><textarea rows="1" spellcheck="false" aria-label="Card title">Shubho Durga Puja</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="3" aria-label="Card message">“May Maa Durga give you the strength to face every storm with grace.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">With love, Your Name</textarea></p>
           </div>
 
-          <div class="face face-ganesh" id="ganesh">
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-durga">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-durga" class="sendbox" name="text" rows="12">🌺 Shubho Durga Puja 🌺
+
+Dear Friend,
+“May Maa Durga give you the strength to face every storm with grace.”
+
+With love, Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#durga</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-durga">Card link (select it to copy)</label>
+              <input id="link-durga" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#durga">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23durga">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23durga&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23durga">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23durga">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23durga">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <form class="festival" id="ganesh" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-ganesh">
             <span class="deco d1" aria-hidden="true">🌼</span><span class="deco d2" aria-hidden="true">🙏</span><span class="deco d3" aria-hidden="true">🌼</span>
-            <h3 contenteditable="true" spellcheck="false">Ganesh Chaturthi</h3>
-            <p class="to" contenteditable="true">Dear Friend,</p>
-            <p class="msg" contenteditable="true">“Begin with a prayer, walk with patience, and every obstacle will make way.”</p>
-            <p class="from" contenteditable="true">Ganpati Bappa Morya! Your Name</p>
+            <h3><textarea rows="1" spellcheck="false" aria-label="Card title">Ganesh Chaturthi</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="3" aria-label="Card message">“Begin with a prayer, walk with patience, and every obstacle will make way.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">Ganpati Bappa Morya! Your Name</textarea></p>
           </div>
 
-          <div class="face face-lohri" id="lohri">
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-ganesh">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-ganesh" class="sendbox" name="text" rows="12">🌼 Ganesh Chaturthi 🌼
+
+Dear Friend,
+“Begin with a prayer, walk with patience, and every obstacle will make way.”
+
+Ganpati Bappa Morya! Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#ganesh</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-ganesh">Card link (select it to copy)</label>
+              <input id="link-ganesh" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#ganesh">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23ganesh">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23ganesh&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23ganesh">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23ganesh">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23ganesh">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <form class="festival" id="lohri" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-lohri">
             <span class="deco d1" aria-hidden="true">🔥</span><span class="deco d2" aria-hidden="true">🍿</span><span class="deco d3" aria-hidden="true">🔥</span>
-            <h3 contenteditable="true" spellcheck="false">Happy Lohri</h3>
-            <p class="to" contenteditable="true">Dear Friend,</p>
-            <p class="msg" contenteditable="true">“May the Lohri bonfire burn away your worries and warm every heart.”</p>
-            <p class="from" contenteditable="true">With love, Your Name</p>
+            <h3><textarea rows="1" spellcheck="false" aria-label="Card title">Happy Lohri</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="3" aria-label="Card message">“May the Lohri bonfire burn away your worries and warm every heart.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">With love, Your Name</textarea></p>
           </div>
 
-          <div class="face face-pongal" id="pongal">
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-lohri">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-lohri" class="sendbox" name="text" rows="12">🔥 Happy Lohri 🔥
+
+Dear Friend,
+“May the Lohri bonfire burn away your worries and warm every heart.”
+
+With love, Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#lohri</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-lohri">Card link (select it to copy)</label>
+              <input id="link-lohri" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#lohri">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23lohri">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23lohri&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23lohri">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23lohri">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23lohri">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <form class="festival" id="pongal" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-pongal">
             <span class="deco d1" aria-hidden="true">🍯</span><span class="deco d2" aria-hidden="true">🌞</span><span class="deco d3" aria-hidden="true">🌾</span>
-            <h3 contenteditable="true" spellcheck="false">Happy Pongal</h3>
-            <p class="to" contenteditable="true">Dear Friend,</p>
-            <p class="msg" contenteditable="true">“As the pot overflows, may your home overflow with joy and plenty.”</p>
-            <p class="from" contenteditable="true">With love, Your Name</p>
+            <h3><textarea rows="1" spellcheck="false" aria-label="Card title">Happy Pongal</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="3" aria-label="Card message">“As the pot overflows, may your home overflow with joy and plenty.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">With love, Your Name</textarea></p>
           </div>
 
-          <div class="face face-onam" id="onam">
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-pongal">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-pongal" class="sendbox" name="text" rows="12">🍯 Happy Pongal 🌾
+
+Dear Friend,
+“As the pot overflows, may your home overflow with joy and plenty.”
+
+With love, Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#pongal</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-pongal">Card link (select it to copy)</label>
+              <input id="link-pongal" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#pongal">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23pongal">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23pongal&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23pongal">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23pongal">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23pongal">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <form class="festival" id="onam" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-onam">
             <span class="deco d1" aria-hidden="true">🌼</span><span class="deco d2" aria-hidden="true">🛶</span><span class="deco d3" aria-hidden="true">🌼</span>
-            <h3 contenteditable="true" spellcheck="false">Happy Onam</h3>
-            <p class="to" contenteditable="true">Dear Friend,</p>
-            <p class="msg" contenteditable="true">“May the flower carpet at your door bring a year full of colour.”</p>
-            <p class="from" contenteditable="true">With love, Your Name</p>
+            <h3><textarea rows="1" spellcheck="false" aria-label="Card title">Happy Onam</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="3" aria-label="Card message">“May the flower carpet at your door bring a year full of colour.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">With love, Your Name</textarea></p>
           </div>
 
-          <div class="face face-eidfitr" id="eidfitr">
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-onam">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-onam" class="sendbox" name="text" rows="12">🌼 Happy Onam 🌼
+
+Dear Friend,
+“May the flower carpet at your door bring a year full of colour.”
+
+With love, Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#onam</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-onam">Card link (select it to copy)</label>
+              <input id="link-onam" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#onam">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23onam">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23onam&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23onam">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23onam">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23onam">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <form class="festival" id="eidfitr" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-eidfitr">
             <span class="deco d1" aria-hidden="true">🌙</span><span class="deco d2" aria-hidden="true">⭐</span><span class="deco d3" aria-hidden="true">🌙</span>
-            <h3 contenteditable="true" spellcheck="false">Eid Mubarak</h3>
-            <p class="to" contenteditable="true">Dear Friend,</p>
-            <p class="msg" contenteditable="true">“After a month of patience, may Allah reward you with joy beyond measure.”</p>
-            <p class="from" contenteditable="true">With love, Your Name</p>
+            <h3><textarea rows="1" spellcheck="false" aria-label="Card title">Eid Mubarak</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="3" aria-label="Card message">“After a month of patience, may Allah reward you with joy beyond measure.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">With love, Your Name</textarea></p>
           </div>
 
-          <div class="face face-eidadha" id="eidadha">
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-eidfitr">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-eidfitr" class="sendbox" name="text" rows="12">🌙 Eid Mubarak 🌙
+
+Dear Friend,
+“After a month of patience, may Allah reward you with joy beyond measure.”
+
+With love, Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#eidfitr</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-eidfitr">Card link (select it to copy)</label>
+              <input id="link-eidfitr" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#eidfitr">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23eidfitr">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23eidfitr&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23eidfitr">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23eidfitr">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23eidfitr">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <form class="festival" id="eidadha" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-eidadha">
             <span class="deco d1" aria-hidden="true">🕌</span><span class="deco d2" aria-hidden="true">🌙</span><span class="deco d3" aria-hidden="true">🕌</span>
-            <h3 contenteditable="true" spellcheck="false">Eid ul-Adha Mubarak</h3>
-            <p class="to" contenteditable="true">Dear Friend,</p>
-            <p class="msg" contenteditable="true">“May your sacrifices turn into blessings and your heart stay generous.”</p>
-            <p class="from" contenteditable="true">With love, Your Name</p>
+            <h3><textarea rows="2" spellcheck="false" aria-label="Card title">Eid ul-Adha Mubarak</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="3" aria-label="Card message">“May your sacrifices turn into blessings and your heart stay generous.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">With love, Your Name</textarea></p>
           </div>
 
-          <div class="face face-gurpurab" id="gurpurab">
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-eidadha">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-eidadha" class="sendbox" name="text" rows="12">🕌 Eid ul-Adha Mubarak 🕌
+
+Dear Friend,
+“May your sacrifices turn into blessings and your heart stay generous.”
+
+With love, Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#eidadha</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-eidadha">Card link (select it to copy)</label>
+              <input id="link-eidadha" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#eidadha">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23eidadha">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23eidadha&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23eidadha">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23eidadha">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23eidadha">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <form class="festival" id="gurpurab" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-gurpurab">
             <span class="deco d1" aria-hidden="true">☬</span><span class="deco d2" aria-hidden="true">🌟</span><span class="deco d3" aria-hidden="true">☬</span>
-            <h3 contenteditable="true" spellcheck="false">Guru Nanak Jayanti</h3>
-            <p class="to" contenteditable="true">Dear Friend,</p>
-            <p class="msg" contenteditable="true">“Walk in the light of Guru Nanak: be honest, be kind, serve everyone.”</p>
-            <p class="from" contenteditable="true">Waheguru Ji Ka Khalsa. Your Name</p>
+            <h3><textarea rows="1" spellcheck="false" aria-label="Card title">Guru Nanak Jayanti</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="3" aria-label="Card message">“Walk in the light of Guru Nanak: be honest, be kind, serve everyone.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">Waheguru Ji Ka Khalsa. Your Name</textarea></p>
           </div>
 
-          <div class="face face-baisakhi" id="baisakhi">
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-gurpurab">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-gurpurab" class="sendbox" name="text" rows="12">☬ Guru Nanak Jayanti ☬
+
+Dear Friend,
+“Walk in the light of Guru Nanak: be honest, be kind, serve everyone.”
+
+Waheguru Ji Ka Khalsa. Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#gurpurab</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-gurpurab">Card link (select it to copy)</label>
+              <input id="link-gurpurab" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#gurpurab">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23gurpurab">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23gurpurab&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23gurpurab">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23gurpurab">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23gurpurab">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <form class="festival" id="baisakhi" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-baisakhi">
             <span class="deco d1" aria-hidden="true">🌾</span><span class="deco d2" aria-hidden="true">🥁</span><span class="deco d3" aria-hidden="true">🌾</span>
-            <h3 contenteditable="true" spellcheck="false">Happy Baisakhi</h3>
-            <p class="to" contenteditable="true">Dear Friend,</p>
-            <p class="msg" contenteditable="true">“May golden fields of wheat bring golden days of joy to your family.”</p>
-            <p class="from" contenteditable="true">With love, Your Name</p>
+            <h3><textarea rows="1" spellcheck="false" aria-label="Card title">Happy Baisakhi</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="3" aria-label="Card message">“May golden fields of wheat bring golden days of joy to your family.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">With love, Your Name</textarea></p>
           </div>
 
-          <div class="face face-buddha" id="buddha">
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-baisakhi">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-baisakhi" class="sendbox" name="text" rows="12">🌾 Happy Baisakhi 🌾
+
+Dear Friend,
+“May golden fields of wheat bring golden days of joy to your family.”
+
+With love, Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#baisakhi</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-baisakhi">Card link (select it to copy)</label>
+              <input id="link-baisakhi" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#baisakhi">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23baisakhi">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23baisakhi&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23baisakhi">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23baisakhi">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23baisakhi">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <form class="festival" id="buddha" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-buddha">
             <span class="deco d1" aria-hidden="true">☸️</span><span class="deco d2" aria-hidden="true">🕯️</span><span class="deco d3" aria-hidden="true">☸️</span>
-            <h3 contenteditable="true" spellcheck="false">Happy Buddha Purnima</h3>
-            <p class="to" contenteditable="true">Dear Friend,</p>
-            <p class="msg" contenteditable="true">“Peace comes from within. May you find it in every quiet moment.”</p>
-            <p class="from" contenteditable="true">With love, Your Name</p>
+            <h3><textarea rows="2" spellcheck="false" aria-label="Card title">Happy Buddha Purnima</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="3" aria-label="Card message">“Peace comes from within. May you find it in every quiet moment.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">With love, Your Name</textarea></p>
           </div>
 
-          <div class="face face-mahavir" id="mahavir">
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-buddha">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-buddha" class="sendbox" name="text" rows="12">☸️ Happy Buddha Purnima ☸️
+
+Dear Friend,
+“Peace comes from within. May you find it in every quiet moment.”
+
+With love, Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#buddha</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-buddha">Card link (select it to copy)</label>
+              <input id="link-buddha" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#buddha">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23buddha">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23buddha&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23buddha">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23buddha">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23buddha">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <form class="festival" id="mahavir" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-mahavir">
             <span class="deco d1" aria-hidden="true">🪷</span><span class="deco d2" aria-hidden="true">🕊️</span><span class="deco d3" aria-hidden="true">🪷</span>
-            <h3 contenteditable="true" spellcheck="false">Mahavir Jayanti</h3>
-            <p class="to" contenteditable="true">Dear Friend,</p>
-            <p class="msg" contenteditable="true">“Live and let live. May kindness be the path you choose each day.”</p>
-            <p class="from" contenteditable="true">With love, Your Name</p>
+            <h3><textarea rows="1" spellcheck="false" aria-label="Card title">Mahavir Jayanti</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="3" aria-label="Card message">“Live and let live. May kindness be the path you choose each day.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">With love, Your Name</textarea></p>
           </div>
 
-          <div class="face face-christmas" id="christmas">
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-mahavir">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-mahavir" class="sendbox" name="text" rows="12">🪷 Mahavir Jayanti 🪷
+
+Dear Friend,
+“Live and let live. May kindness be the path you choose each day.”
+
+With love, Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#mahavir</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-mahavir">Card link (select it to copy)</label>
+              <input id="link-mahavir" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#mahavir">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23mahavir">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23mahavir&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23mahavir">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23mahavir">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23mahavir">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <form class="festival" id="christmas" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-christmas">
             <span class="deco d1" aria-hidden="true">🎄</span><span class="deco d2" aria-hidden="true">🎁</span><span class="deco d3" aria-hidden="true">❄️</span>
-            <h3 contenteditable="true" spellcheck="false">Merry Christmas</h3>
-            <p class="to" contenteditable="true">Dear Friend,</p>
-            <p class="msg" contenteditable="true">“May the warmth of Christmas stay in your heart long after the lights fade.”</p>
-            <p class="from" contenteditable="true">With love, Your Name</p>
+            <h3><textarea rows="1" spellcheck="false" aria-label="Card title">Merry Christmas</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="3" aria-label="Card message">“May the warmth of Christmas stay in your heart long after the lights fade.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">With love, Your Name</textarea></p>
           </div>
 
-          <div class="face face-easter" id="easter">
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-christmas">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-christmas" class="sendbox" name="text" rows="12">🎄 Merry Christmas ❄️
+
+Dear Friend,
+“May the warmth of Christmas stay in your heart long after the lights fade.”
+
+With love, Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#christmas</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-christmas">Card link (select it to copy)</label>
+              <input id="link-christmas" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#christmas">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23christmas">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23christmas&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23christmas">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23christmas">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23christmas">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <form class="festival" id="easter" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-easter">
             <span class="deco d1" aria-hidden="true">🐣</span><span class="deco d2" aria-hidden="true">🌷</span><span class="deco d3" aria-hidden="true">🐣</span>
-            <h3 contenteditable="true" spellcheck="false">Happy Easter</h3>
-            <p class="to" contenteditable="true">Dear Friend,</p>
-            <p class="msg" contenteditable="true">“Every ending hides a new beginning. Wishing you hope and a fresh start.”</p>
-            <p class="from" contenteditable="true">With love, Your Name</p>
+            <h3><textarea rows="1" spellcheck="false" aria-label="Card title">Happy Easter</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="3" aria-label="Card message">“Every ending hides a new beginning. Wishing you hope and a fresh start.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">With love, Your Name</textarea></p>
           </div>
 
-          <div class="face face-newyear" id="newyear">
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-easter">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-easter" class="sendbox" name="text" rows="12">🐣 Happy Easter 🐣
+
+Dear Friend,
+“Every ending hides a new beginning. Wishing you hope and a fresh start.”
+
+With love, Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#easter</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-easter">Card link (select it to copy)</label>
+              <input id="link-easter" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#easter">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23easter">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23easter&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23easter">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23easter">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23easter">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <form class="festival" id="newyear" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-newyear">
             <span class="deco d1" aria-hidden="true">🎆</span><span class="deco d2" aria-hidden="true">🎉</span><span class="deco d3" aria-hidden="true">🎇</span>
-            <h3 contenteditable="true" spellcheck="false">Happy New Year</h3>
-            <p class="to" contenteditable="true">Dear Friend,</p>
-            <p class="msg" contenteditable="true">“A new year is a blank page. Write something you will be proud of.”</p>
-            <p class="from" contenteditable="true">With love, Your Name</p>
+            <h3><textarea rows="1" spellcheck="false" aria-label="Card title">Happy New Year</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="3" aria-label="Card message">“A new year is a blank page. Write something you will be proud of.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">With love, Your Name</textarea></p>
           </div>
 
-          <div class="face face-independence" id="independence">
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-newyear">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-newyear" class="sendbox" name="text" rows="12">🎆 Happy New Year 🎇
+
+Dear Friend,
+“A new year is a blank page. Write something you will be proud of.”
+
+With love, Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#newyear</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-newyear">Card link (select it to copy)</label>
+              <input id="link-newyear" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#newyear">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23newyear">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23newyear&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23newyear">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23newyear">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23newyear">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <form class="festival" id="independence" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-independence">
             <span class="deco d1" aria-hidden="true">🇮🇳</span><span class="deco d2" aria-hidden="true">🕊️</span><span class="deco d3" aria-hidden="true">🇮🇳</span>
-            <h3 contenteditable="true" spellcheck="false">Happy Independence Day</h3>
-            <p class="to" contenteditable="true">Dear Friend,</p>
-            <p class="msg" contenteditable="true">“Proud of our past, hopeful for our future. Jai Hind!”</p>
-            <p class="from" contenteditable="true">With love, Your Name</p>
+            <h3><textarea rows="2" spellcheck="false" aria-label="Card title">Happy Independence Day</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="2" aria-label="Card message">“Proud of our past, hopeful for our future. Jai Hind!”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">With love, Your Name</textarea></p>
           </div>
 
-          <div class="face face-republic" id="republic">
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-independence">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-independence" class="sendbox" name="text" rows="12">🇮🇳 Happy Independence Day 🇮🇳
+
+Dear Friend,
+“Proud of our past, hopeful for our future. Jai Hind!”
+
+With love, Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#independence</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-independence">Card link (select it to copy)</label>
+              <input id="link-independence" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#independence">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23independence">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23independence&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23independence">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23independence">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23independence">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <form class="festival" id="republic" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-republic">
             <span class="deco d1" aria-hidden="true">🎖️</span><span class="deco d2" aria-hidden="true">🇮🇳</span><span class="deco d3" aria-hidden="true">🎖️</span>
-            <h3 contenteditable="true" spellcheck="false">Happy Republic Day</h3>
-            <p class="to" contenteditable="true">Dear Friend,</p>
-            <p class="msg" contenteditable="true">“Freedom is a gift, and our Constitution is its promise. Let us keep it alive.”</p>
-            <p class="from" contenteditable="true">With love, Your Name</p>
+            <h3><textarea rows="1" spellcheck="false" aria-label="Card title">Happy Republic Day</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="3" aria-label="Card message">“Freedom is a gift, and our Constitution is its promise. Let us keep it alive.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">With love, Your Name</textarea></p>
           </div>
 
-        </article>
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
 
-        <!-- Save option: always under the card once a festival is chosen -->
-        <div class="savebar" id="savebar" hidden>
-          <span>Like your card? Save it, then share it with your friends.</span>
-          <button type="button" id="save" class="save">💾 Save card</button>
-        </div>
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
 
-        <!-- Share options: appear right after saving -->
-        <div class="sharebar" id="sharebar" hidden>
-          <strong>✅ Card saved! Share it with link</strong>
-          <div id="share-buttons"></div>
-        </div>
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-republic">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-republic" class="sendbox" name="text" rows="12">🎖️ Happy Republic Day 🎖️
+
+Dear Friend,
+“Freedom is a gift, and our Constitution is its promise. Let us keep it alive.”
+
+With love, Your Name
+
+Make your own card: https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#republic</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-republic">Card link (select it to copy)</label>
+              <input id="link-republic" class="linkbox" type="text" readonly value="https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/#republic">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23republic">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23republic&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23republic">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23republic">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fshubhamchandravanshi3107-lab.github.io%2FREPO-NAME%2F%23republic">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
 
         <div class="notes">
-          <p class="hint">Instagram does not allow posting from a website. The button copies your message and opens Instagram. Take a screenshot of the card to post it as a story or post.</p>
+          <p class="hint">Instagram does not allow posting from a website. Take a screenshot of the card to post it as a story or post.</p>
           <p class="hint">Save as PDF: press Ctrl + P and choose "Save as PDF". Only the card is printed.</p>
         </div>
         </div>
 
-        <!-- Shown when someone opens a shared link -->
+        <!-- Shown when someone opens a shared link such as ...#diwali -->
         <div class="viewcta">
           <p>Someone sent you this greeting card.</p>
           <a class="btn" href="./">Make your own card</a>
         </div>
-
-        <!-- Saved cards live here, with their share links -->
-        <section id="yourcard" class="panel yourcard" hidden>
-          <h2>Your Card</h2>
-          <p class="sub">Your saved cards stay in this browser. Share any card as a link.</p>
-          <div id="saved-list" class="saved-grid"></div>
-        </section>
       </div>
 
       <aside id="options" class="panel side" aria-labelledby="pick-title">
@@ -289,273 +1214,98 @@
           </optgroup>
         </select>
 
-        <div class="about" aria-live="polite">
-          <strong id="about-tag"></strong>
-          <p id="about-text"></p>
+        <div class="about" id="about-diwali">
+          <strong>Festival of Lights</strong>
+          <p>Celebrated in October or November. Homes glow with diyas and rangoli, families share sweets and pray to Goddess Lakshmi. It marks the victory of light over darkness and Lord Rama’s return to Ayodhya.</p>
+        </div>
+        <div class="about" id="about-holi">
+          <strong>Festival of Colours</strong>
+          <p>Celebrated in March. People play with colours, sing and share sweets to welcome spring. It begins with Holika Dahan, the victory of good over evil.</p>
+        </div>
+        <div class="about" id="about-rakhi">
+          <strong>Bond of Brother and Sister</strong>
+          <p>Celebrated in August. Sisters tie a rakhi on their brothers’ wrists, and brothers promise love, care and protection.</p>
+        </div>
+        <div class="about" id="about-navratri">
+          <strong>Nine Nights of the Goddess</strong>
+          <p>Nine nights of worship of Goddess Durga, with fasting, garba and dandiya raas in the evenings.</p>
+        </div>
+        <div class="about" id="about-dussehra">
+          <strong>Victory of Good over Evil</strong>
+          <p>Marks Lord Rama’s victory over Ravana. Effigies of Ravana are burnt on the tenth day after Navratri.</p>
+        </div>
+        <div class="about" id="about-janmashtami">
+          <strong>Birth of Lord Krishna</strong>
+          <p>Celebrated with fasting, bhajans, midnight prayers and the dahi handi pot-breaking fun.</p>
+        </div>
+        <div class="about" id="about-durga">
+          <strong>Festival of Goddess Durga</strong>
+          <p>Most popular in Bengal. Grand pandals, dhak drums, dhunuchi dance and sindoor khela over five days.</p>
+        </div>
+        <div class="about" id="about-ganesh">
+          <strong>Birthday of Lord Ganesha</strong>
+          <p>Ganesha idols are welcomed at home for a few days, offered modaks, and then immersed in water with cheers of Ganpati Bappa Morya.</p>
+        </div>
+        <div class="about" id="about-lohri">
+          <strong>Winter Harvest Bonfire</strong>
+          <p>Celebrated in mid-January, mainly in Punjab. People dance bhangra around a bonfire and offer peanuts, rewri and popcorn.</p>
+        </div>
+        <div class="about" id="about-pongal">
+          <strong>Tamil Harvest Festival</strong>
+          <p>A four-day festival in January. Fresh rice is cooked until the pot overflows, to thank the Sun God and the farmers.</p>
+        </div>
+        <div class="about" id="about-onam">
+          <strong>Harvest Festival of Kerala</strong>
+          <p>Celebrated with pookalam flower carpets, the grand sadya feast, boat races and folk dances.</p>
+        </div>
+        <div class="about" id="about-eidfitr">
+          <strong>Festival of Breaking the Fast</strong>
+          <p>Marks the end of Ramadan. People offer special prayers, wear new clothes, share sheer khurma and give charity to the needy.</p>
+        </div>
+        <div class="about" id="about-eidadha">
+          <strong>Festival of Sacrifice</strong>
+          <p>Remembers Prophet Ibrahim’s devotion to Allah. Meat is shared with family, friends and the poor.</p>
+        </div>
+        <div class="about" id="about-gurpurab">
+          <strong>Birth of Guru Nanak Dev Ji</strong>
+          <p>Celebrated with prabhat pheris, kirtan and langar at gurdwaras. It remembers the teachings of honest work, sharing and equality.</p>
+        </div>
+        <div class="about" id="about-baisakhi">
+          <strong>Sikh New Year and Harvest</strong>
+          <p>Celebrated on 13 or 14 April. It marks the harvest and the founding of the Khalsa in 1699, with bhangra, fairs and gurdwara visits.</p>
+        </div>
+        <div class="about" id="about-buddha">
+          <strong>Birth of Gautama Buddha</strong>
+          <p>Celebrated on the full moon of Vaishakha with meditation, prayers and acts of kindness.</p>
+        </div>
+        <div class="about" id="about-mahavir">
+          <strong>Birth of Lord Mahavir</strong>
+          <p>A Jain festival of processions and prayers, remembering the teachings of ahimsa (non-violence) and truth.</p>
+        </div>
+        <div class="about" id="about-christmas">
+          <strong>Birth of Jesus Christ</strong>
+          <p>Celebrated on 25 December with church services, carols, the Christmas tree, gifts and a family feast.</p>
+        </div>
+        <div class="about" id="about-easter">
+          <strong>Resurrection of Jesus</strong>
+          <p>Celebrated after Good Friday with church services, Easter eggs and family gatherings. It is a symbol of hope and new life.</p>
+        </div>
+        <div class="about" id="about-newyear">
+          <strong>First Day of the Year</strong>
+          <p>Celebrated on 1 January with countdowns, fireworks, parties and fresh resolutions.</p>
+        </div>
+        <div class="about" id="about-independence">
+          <strong>15 August 1947</strong>
+          <p>The day India became free from British rule. The Prime Minister hoists the flag at the Red Fort and the nation sings with pride.</p>
+        </div>
+        <div class="about" id="about-republic">
+          <strong>26 January 1950</strong>
+          <p>The day the Constitution of India came into effect. Celebrated with a grand parade on Kartavya Path in Delhi.</p>
         </div>
 
-        <p class="hint editnote">Click any text on the card to edit it. Write your personal note inside the card too. A Save button will appear under the card.</p>
+        <p class="hint editnote">Click any text on the card to edit it. Write your personal note inside the card too. Then press Save card under the card.</p>
       </aside>
     </div>
   </main>
-
-  <div class="toast" id="toast"></div>
-
-  <script>
-    // Festival info shown under the dropdown
-    var about = {
-      diwali: ["Festival of Lights", "Celebrated in October or November. Homes glow with diyas and rangoli, families share sweets and pray to Goddess Lakshmi. It marks the victory of light over darkness and Lord Rama\u2019s return to Ayodhya."],
-      holi: ["Festival of Colours", "Celebrated in March. People play with colours, sing and share sweets to welcome spring. It begins with Holika Dahan, the victory of good over evil."],
-      rakhi: ["Bond of Brother and Sister", "Celebrated in August. Sisters tie a rakhi on their brothers\u2019 wrists, and brothers promise love, care and protection."],
-      navratri: ["Nine Nights of the Goddess", "Nine nights of worship of Goddess Durga, with fasting, garba and dandiya raas in the evenings."],
-      dussehra: ["Victory of Good over Evil", "Marks Lord Rama\u2019s victory over Ravana. Effigies of Ravana are burnt on the tenth day after Navratri."],
-      janmashtami: ["Birth of Lord Krishna", "Celebrated with fasting, bhajans, midnight prayers and the dahi handi pot-breaking fun."],
-      durga: ["Festival of Goddess Durga", "Most popular in Bengal. Grand pandals, dhak drums, dhunuchi dance and sindoor khela over five days."],
-      ganesh: ["Birthday of Lord Ganesha", "Ganesha idols are welcomed at home for a few days, offered modaks, and then immersed in water with cheers of Ganpati Bappa Morya."],
-      lohri: ["Winter Harvest Bonfire", "Celebrated in mid-January, mainly in Punjab. People dance bhangra around a bonfire and offer peanuts, rewri and popcorn."],
-      pongal: ["Tamil Harvest Festival", "A four-day festival in January. Fresh rice is cooked until the pot overflows, to thank the Sun God and the farmers."],
-      onam: ["Harvest Festival of Kerala", "Celebrated with pookalam flower carpets, the grand sadya feast, boat races and folk dances."],
-      eidfitr: ["Festival of Breaking the Fast", "Marks the end of Ramadan. People offer special prayers, wear new clothes, share sheer khurma and give charity to the needy."],
-      eidadha: ["Festival of Sacrifice", "Remembers Prophet Ibrahim\u2019s devotion to Allah. Meat is shared with family, friends and the poor."],
-      gurpurab: ["Birth of Guru Nanak Dev Ji", "Celebrated with prabhat pheris, kirtan and langar at gurdwaras. It remembers the teachings of honest work, sharing and equality."],
-      baisakhi: ["Sikh New Year and Harvest", "Celebrated on 13 or 14 April. It marks the harvest and the founding of the Khalsa in 1699, with bhangra, fairs and gurdwara visits."],
-      buddha: ["Birth of Gautama Buddha", "Celebrated on the full moon of Vaishakha with meditation, prayers and acts of kindness."],
-      mahavir: ["Birth of Lord Mahavir", "A Jain festival of processions and prayers, remembering the teachings of ahimsa (non-violence) and truth."],
-      christmas: ["Birth of Jesus Christ", "Celebrated on 25 December with church services, carols, the Christmas tree, gifts and a family feast."],
-      easter: ["Resurrection of Jesus", "Celebrated after Good Friday with church services, Easter eggs and family gatherings. It is a symbol of hope and new life."],
-      newyear: ["First Day of the Year", "Celebrated on 1 January with countdowns, fireworks, parties and fresh resolutions."],
-      independence: ["15 August 1947", "The day India became free from British rule. The Prime Minister hoists the flag at the Red Fort and the nation sings with pride."],
-      republic: ["26 January 1950", "The day the Constitution of India came into effect. Celebrated with a grand parade on Kartavya Path in Delhi."]
-    };
-
-    var $ = function (s, r) { return (r || document).querySelector(s); };
-    var select = $("#festival");
-    var faces = [].slice.call(document.querySelectorAll(".face"));
-    var bar = $("#savebar");
-    var shareBar = $("#sharebar");
-    var saveBtn = $("#save");
-    var KEY = "greeting_cards";
-    var editing = null;
-
-    function get() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
-    function put(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} }
-    function txt(f, s) { return $(s, f).textContent.trim(); }
-
-    function toast(msg) {
-      var t = $("#toast");
-      t.textContent = msg;
-      t.classList.add("show");
-      setTimeout(function () { t.classList.remove("show"); }, 2200);
-    }
-
-    // The personal note lives inside every card, so it is saved with the card
-    faces.forEach(function (f) {
-      var n = document.createElement("p");
-      n.className = "note";
-      n.contentEditable = "true";
-      n.setAttribute("data-placeholder", "Write your personal note here...");
-      f.insertBefore(n, $(".from", f));
-    });
-
-    // ---------- 1. Show a festival (nothing until one is chosen) ----------
-    function activeFace() { return document.getElementById(select.value); }
-
-    function showFestival(id) {
-      var has = !!about[id];
-      document.body.classList.toggle("no-festival", !has);
-      faces.forEach(function (f) { f.classList.toggle("active", has && f.id === id); });
-      select.value = has ? id : "";
-      $("#about-tag").textContent = has ? about[id][0] : "";
-      $("#about-text").textContent = has ? about[id][1] : "";
-      editing = null;
-      bar.hidden = !has;
-      shareBar.hidden = true;
-    }
-
-    select.addEventListener("change", function () {
-      showFestival(select.value);
-      if (window.innerWidth <= 900) { $(".stage").scrollIntoView({ behavior: "smooth" }); }
-    });
-
-    // The save bar shows up as soon as the card is changed
-    function mark() {
-      if (!activeFace() || document.body.classList.contains("view-mode")) { return; }
-      saveBtn.textContent = editing ? "\uD83D\uDCBE Update saved card" : "\uD83D\uDCBE Save card";
-      shareBar.hidden = true;
-      bar.hidden = false;
-    }
-
-    $(".card").addEventListener("input", mark);
-
-    // ---------- 2. Save, and show in "Your Card" ----------
-    function currentCard() {
-      var f = activeFace();
-      return {
-        uid: editing || Date.now().toString(36),
-        id: select.value,
-        t: txt(f, "h3"), to: txt(f, ".to"), msg: txt(f, ".msg"), note: txt(f, ".note"), from: txt(f, ".from")
-      };
-    }
-
-    function fillCard(c) {
-      var f = document.getElementById(c.id);
-      $("h3", f).textContent = c.t;
-      $(".to", f).textContent = c.to;
-      $(".msg", f).textContent = c.msg;
-      $(".note", f).textContent = c.note;
-      $(".from", f).textContent = c.from;
-    }
-
-    saveBtn.addEventListener("click", function () {
-      if (!activeFace()) { return; }
-      var card = currentCard(), found = false;
-      var cards = get().map(function (x) {
-        if (x.uid === card.uid) { found = true; return card; }
-        return x;
-      });
-      if (!found) { cards.unshift(card); }
-      put(cards);
-      editing = card.uid;
-      bar.hidden = true;
-      renderSaved();
-      showShare(card);
-      toast("Card saved");
-    });
-
-    // ---------- 3. Share as a link ----------
-    // Put your live GitHub Pages link here (keep the / at the end)
-    var SITE_URL = "https://shubhamchandravanshi3107-lab.github.io/REPO-NAME/";
-
-    // On your computer (file or localhost) links use SITE_URL, so they never give 404
-    function siteBase() {
-      var here = location.href.split("#")[0];
-      var local = location.protocol === "file:" || /^https?:\/\/(localhost|127\.)/.test(here);
-      return local ? SITE_URL : here;
-    }
-
-    function linkFor(c) {
-      var data = { i: c.id, t: c.t, o: c.to, m: c.msg, n: c.note, f: c.from };
-      return siteBase() + "#c=" + encodeURIComponent(JSON.stringify(data));
-    }
-
-    function copyLink(url) {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(url).then(
-          function () { toast("Link copied"); },
-          function () { window.prompt("Copy this link:", url); }
-        );
-      } else {
-        window.prompt("Copy this link:", url);
-      }
-    }
-
-    function makeLink(text, href, cls) {
-      var a = document.createElement("a");
-      a.className = "btn " + (cls || "");
-      a.textContent = text; a.href = href; a.target = "_blank"; a.rel = "noopener";
-      return a;
-    }
-
-    function makeButton(text, cls, fn) {
-      var b = document.createElement("button");
-      b.type = "button"; b.className = cls; b.textContent = text; b.onclick = fn;
-      return b;
-    }
-
-    // All share buttons for one saved card
-    function shareButtons(c) {
-      var url = linkFor(c), msg = "A greeting card for you";
-      var box = document.createElement("div"); box.className = "saved-actions";
-      box.appendChild(makeButton("Copy link", "", function () { copyLink(url); }));
-      box.appendChild(makeLink("WhatsApp", "https://wa.me/?text=" + encodeURIComponent(msg + ": " + url), "ghost"));
-      box.appendChild(makeButton("Instagram", "ghost", function () { copyLink(url); window.open("https://www.instagram.com/", "_blank"); }));
-      box.appendChild(makeLink("Facebook", "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url), "ghost"));
-      box.appendChild(makeLink("Email", "mailto:?subject=" + encodeURIComponent(msg) + "&body=" + encodeURIComponent("Open your greeting card here: " + url), "ghost"));
-      box.appendChild(makeLink("X", "https://twitter.com/intent/tweet?text=" + encodeURIComponent(msg) + "&url=" + encodeURIComponent(url), "ghost"));
-      box.appendChild(makeLink("Snapchat", "https://www.snapchat.com/scan?attachmentUrl=" + encodeURIComponent(url), "ghost"));
-      return box;
-    }
-
-    // Right after saving: show the share buttons under the card
-    function showShare(c) {
-      var box = $("#share-buttons");
-      box.innerHTML = "";
-      box.appendChild(shareButtons(c));
-      shareBar.hidden = false;
-      shareBar.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    }
-
-    function renderSaved() {
-      var list = $("#saved-list"), cards = get();
-      list.innerHTML = "";
-      $("#yourcard").hidden = !cards.length;
-
-      cards.forEach(function (c) {
-        var src = document.getElementById(c.id);
-        if (!src) { return; }
-        var mini = src.cloneNode(true);
-        mini.removeAttribute("id");
-        mini.className = "face mini face-" + c.id;
-        [].forEach.call(mini.querySelectorAll("[contenteditable]"), function (e) { e.removeAttribute("contenteditable"); });
-        $("h3", mini).textContent = c.t;
-        $(".to", mini).textContent = c.to;
-        $(".msg", mini).textContent = c.msg;
-        $(".note", mini).textContent = c.note;
-        $(".from", mini).textContent = c.from;
-
-        var share = shareButtons(c);
-
-        var more = document.createElement("div"); more.className = "saved-actions";
-        more.appendChild(makeButton("Edit", "ghost", function () { openCard(c); }));
-        more.appendChild(makeButton("Delete", "ghost", function () {
-          put(get().filter(function (x) { return x.uid !== c.uid; }));
-          renderSaved();
-          toast("Card deleted");
-        }));
-
-        var label = document.createElement("p");
-        label.className = "share-title"; label.textContent = "Share with link";
-
-        var item = document.createElement("div"); item.className = "saved-item";
-        item.appendChild(mini); item.appendChild(label); item.appendChild(share); item.appendChild(more);
-        list.appendChild(item);
-      });
-    }
-
-    function openCard(c) {
-      showFestival(c.id);
-      fillCard(c);
-      editing = c.uid;
-      mark();
-      $("#maker").scrollIntoView({ behavior: "smooth" });
-    }
-
-    // ---------- 4. Someone opens a shared link ----------
-    function openSharedLink() {
-      if (location.hash.indexOf("#c=") !== 0) { return false; }
-      var d;
-      try { d = JSON.parse(decodeURIComponent(location.hash.slice(3))); } catch (e) { return false; }
-      if (!d || !about[d.i]) { return false; }
-
-      document.body.classList.add("view-mode");
-      showFestival(d.i);
-      fillCard({
-        id: d.i, t: String(d.t || ""), to: String(d.o || ""), msg: String(d.m || ""),
-        note: String(d.n || ""), from: String(d.f || "")
-      });
-      [].forEach.call(document.getElementById(d.i).querySelectorAll("[contenteditable]"), function (e) {
-        e.removeAttribute("contenteditable");
-      });
-      return true;
-    }
-
-    window.addEventListener("hashchange", function () {
-      if (location.hash.indexOf("#c=") === 0) { location.reload(); }
-    });
-
-    // ---------- Start ----------
-    if (!openSharedLink()) { showFestival(""); }
-    renderSaved();
-  </script>
 </body>
 </html>
