@@ -222,6 +222,7 @@ body.no-festival .empty {
 .empty p { margin: 0; color: var(--muted); }
 
 body.no-festival .about,
+body.no-festival .notes,
 body.no-festival .editnote { display: none; }
 
 /* ===== 7. Sidebar: select and about ===== */
@@ -295,6 +296,24 @@ button:hover, .btn:hover { background-color: var(--brand-dark); border-color: va
 
 .savebar[hidden] { display: none; }
 
+/* Keep the save bar visible while the card is on screen */
+.savebar { position: sticky; bottom: 12px; z-index: 5; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); }
+
+/* Share buttons right after saving */
+.sharebar {
+  max-width: var(--card-w);
+  margin: 16px auto 0;
+  padding: 14px 16px;
+  background-color: var(--panel);
+  border: 1.5px solid var(--brand);
+  border-radius: 14px;
+}
+
+.sharebar[hidden] { display: none; }
+.sharebar strong { display: block; margin-bottom: 10px; }
+
+.notes { max-width: var(--card-w); margin: 8px auto 0; }
+
 /* ===== 10. Your Card (saved cards with share links) ===== */
 .yourcard { margin: 24px 0 0; }
 .yourcard[hidden] { display: none; }
@@ -329,6 +348,8 @@ button:hover, .btn:hover { background-color: var(--brand-dark); border-color: va
 
 body.view-mode .side,
 body.view-mode .savebar,
+body.view-mode .sharebar,
+body.view-mode .notes,
 body.view-mode .yourcard,
 body.view-mode .empty { display: none; }
 
@@ -365,7 +386,7 @@ body.view-mode .face h3:hover, body.view-mode .face p:hover { outline: none; }
 
 /* ===== 14. Print: only the card ===== */
 @media print {
-  .site-header, .hero, .side, .savebar, .yourcard, .viewcta, .toast, .empty, footer { display: none !important; }
+  .site-header, .hero, .side, .savebar, .sharebar, .notes, .yourcard, .viewcta, .toast, .empty, footer { display: none !important; }
   .layout { display: block; }
   body { background: #ffffff; }
   main { margin: 0; }
