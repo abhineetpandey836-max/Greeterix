@@ -1162,6 +1162,57 @@ Make your own card: https://greeting-card-maker-with-custom-sha.vercel.app/#repu
           </details>
         </form>
 
+        <form class="festival" id="chhath" method="get" action="https://wa.me/" target="_blank">
+          <div class="face face-chhath">
+            <span class="deco d1" aria-hidden="true">🌅</span><span class="deco d2" aria-hidden="true">☀️</span><span class="deco d3" aria-hidden="true">🪔</span>
+            <h3><textarea rows="1" spellcheck="false" aria-label="Card title">Happy Chhath Puja</textarea></h3>
+            <p class="to"><textarea rows="1" aria-label="Who the card is for">Dear Friend,</textarea></p>
+            <p class="msg"><textarea rows="3" aria-label="Card message">“Bowing to the rising sun, may your life glow with health, faith and joy.”</textarea></p>
+            <textarea class="note" rows="1" placeholder="Write your personal note here..." aria-label="Your personal note"></textarea>
+            <p class="from"><textarea rows="1" aria-label="Your name">With love, Your Name</textarea></p>
+          </div>
+
+          <!-- Save option: opens with no JavaScript, using the native details element -->
+          <details class="savebar">
+            <summary>
+              <span>Like your card? Save it, then share it with your friends.</span>
+              <span class="btn save"><span class="when-closed">💾 Save card</span><span class="when-open">✕ Close</span></span>
+            </summary>
+
+            <div class="sharebar">
+              <strong>💾 Keep a copy of your card</strong>
+              <p class="hint">Press Ctrl + P (⌘ + P on Mac, Share → Print on phones) and choose “Save as PDF”. Only the card is printed. A screenshot works too.</p>
+
+              <strong>📨 Send your message</strong>
+              <label class="hint" for="send-chhath">This is the text that gets sent. Change it before you send.</label>
+              <textarea id="send-chhath" class="sendbox" name="text" rows="12">🌅 Happy Chhath Puja 🪔
+
+Dear Friend,
+“Bowing to the rising sun, may your life glow with health, faith and joy.”
+
+With love, Your Name
+
+Make your own card: https://greeting-card-maker-with-custom-sha.vercel.app/#chhath</textarea>
+              <div class="saved-actions">
+                <button type="submit" formaction="https://wa.me/">WhatsApp</button>
+                <button type="submit" formaction="https://twitter.com/intent/tweet" class="ghost">X</button>
+              </div>
+
+              <strong>🔗 Share with link</strong>
+              <label class="hint" for="link-chhath">Card link (select it to copy)</label>
+              <input id="link-chhath" class="linkbox" type="text" readonly value="https://greeting-card-maker-with-custom-sha.vercel.app/#chhath">
+              <div class="saved-actions">
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgreeting-card-maker-with-custom-sha.vercel.app%2F%23chhath">Facebook</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fgreeting-card-maker-with-custom-sha.vercel.app%2F%23chhath&amp;text=A%20greeting%20card%20for%20you">Telegram</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fgreeting-card-maker-with-custom-sha.vercel.app%2F%23chhath">Snapchat</a>
+                <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/">Instagram</a>
+                <a class="btn ghost" href="mailto:?subject=A%20greeting%20card%20for%20you&amp;body=Open%20your%20greeting%20card%20here%3A%20https%3A%2F%2Fgreeting-card-maker-with-custom-sha.vercel.app%2F%23chhath">Email</a>
+                <a class="btn ghost" href="sms:?&amp;body=A%20greeting%20card%20for%20you%3A%20https%3A%2F%2Fgreeting-card-maker-with-custom-sha.vercel.app%2F%23chhath">SMS</a>
+              </div>
+            </div>
+          </details>
+        </form>
+
         <div class="notes">
           <p class="hint">Instagram does not allow posting from a website. Take a screenshot of the card to post it as a story or post.</p>
           <p class="hint">Save as PDF: press Ctrl + P and choose "Save as PDF". Only the card is printed.</p>
@@ -1192,6 +1243,7 @@ Make your own card: https://greeting-card-maker-with-custom-sha.vercel.app/#repu
             <option value="lohri">Lohri</option>
             <option value="pongal">Pongal</option>
             <option value="onam">Onam</option>
+            <option value="chhath">Chhath Puja</option>
           </optgroup>
           <optgroup label="Muslim">
             <option value="eidfitr">Eid ul-Fitr</option>
@@ -1301,6 +1353,10 @@ Make your own card: https://greeting-card-maker-with-custom-sha.vercel.app/#repu
         <div class="about" id="about-republic">
           <strong>26 January 1950</strong>
           <p>The day the Constitution of India came into effect. Celebrated with a grand parade on Kartavya Path in Delhi.</p>
+        </div>
+        <div class="about" id="about-chhath">
+          <strong>Worship of the Sun God</strong>
+          <p>A four-day festival celebrated in October or November, mainly in Bihar, Jharkhand and eastern Uttar Pradesh. Devotees fast and offer arghya to the setting and rising sun at rivers and ponds, thanking Surya Dev and Chhathi Maiya.</p>
         </div>
 
         <p class="hint editnote">Click any text on the card to edit it. Write your personal note inside the card too. Then press Save card under the card.</p>
