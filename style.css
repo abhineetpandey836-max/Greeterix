@@ -115,8 +115,10 @@ main {
 }
 
 /* ===== 5. Greeting cards ===== */
+.festival { display: none; }
+
 .face {
-  display: none;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -151,11 +153,31 @@ main {
 .msg { font-family: "Yatra One", Georgia, serif; font-size: 21px; line-height: 1.5; }
 .from { font-style: italic; }
 
-.face h3:hover, .face p:hover { outline: 2px dashed rgba(255, 255, 255, 0.7); outline-offset: 4px; }
-
-/* Personal note: written inside the card, so it is saved with the card */
-.note {
+/* The text on the card is made of textareas that look like plain text */
+.face textarea {
+  display: block;
   width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  text-align: center;
+  resize: none;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+@supports (field-sizing: content) {
+  .face textarea { field-sizing: content; overflow: hidden; }
+}
+
+.face textarea:hover, .face textarea:focus { outline: 2px dashed rgba(255, 255, 255, 0.7); outline-offset: 4px; }
+
+/* Personal note: written inside the card */
+.face textarea.note {
   min-height: 44px;
   padding: 8px 10px;
   font-size: 16px;
@@ -164,7 +186,7 @@ main {
   border-radius: 10px;
 }
 
-.note:empty::before { content: attr(data-placeholder); opacity: 0.65; }
+.face textarea.note::placeholder { color: currentColor; opacity: 0.65; }
 
 .deco { position: absolute; font-size: 30px; animation: float 4s ease-in-out infinite; }
 .d1 { top: 18px; left: 22px; }
@@ -200,14 +222,32 @@ main {
 .face-independence { --c1: #ea580c; --c2: #15803d; --card-text: #ffffff; --accent: #ffffff; }
 .face-republic     { --c1: #1e3a8a; --c2: #ea580c; --card-text: #ffffff; --accent: #fef3c7; }
 
-/* Which card is visible? Only the chosen one. */
-.face.active { display: flex; }
+/* Which card is visible? Only the chosen one (no JavaScript: select + :has) */
+body:has(#festival option[value="diwali"]:checked) #diwali,
+body:has(#festival option[value="holi"]:checked) #holi,
+body:has(#festival option[value="rakhi"]:checked) #rakhi,
+body:has(#festival option[value="navratri"]:checked) #navratri,
+body:has(#festival option[value="dussehra"]:checked) #dussehra,
+body:has(#festival option[value="janmashtami"]:checked) #janmashtami,
+body:has(#festival option[value="durga"]:checked) #durga,
+body:has(#festival option[value="ganesh"]:checked) #ganesh,
+body:has(#festival option[value="lohri"]:checked) #lohri,
+body:has(#festival option[value="pongal"]:checked) #pongal,
+body:has(#festival option[value="onam"]:checked) #onam,
+body:has(#festival option[value="eidfitr"]:checked) #eidfitr,
+body:has(#festival option[value="eidadha"]:checked) #eidadha,
+body:has(#festival option[value="gurpurab"]:checked) #gurpurab,
+body:has(#festival option[value="baisakhi"]:checked) #baisakhi,
+body:has(#festival option[value="buddha"]:checked) #buddha,
+body:has(#festival option[value="mahavir"]:checked) #mahavir,
+body:has(#festival option[value="christmas"]:checked) #christmas,
+body:has(#festival option[value="easter"]:checked) #easter,
+body:has(#festival option[value="newyear"]:checked) #newyear,
+body:has(#festival option[value="independence"]:checked) #independence,
+body:has(#festival option[value="republic"]:checked) #republic { display: block; }
 
 /* ===== 6. Nothing chosen yet ===== */
-.empty { display: none; }
-
-body.no-festival .empty {
-  display: block;
+.empty {
   max-width: var(--card-w);
   margin: 0 auto;
   padding: 70px 24px;
@@ -221,9 +261,35 @@ body.no-festival .empty {
 .empty h2 { margin-bottom: 6px; }
 .empty p { margin: 0; color: var(--muted); }
 
-body.no-festival .about,
-body.no-festival .notes,
-body.no-festival .editnote { display: none; }
+.about, .notes, .editnote { display: none; }
+
+body:has(#festival option:not([value=""]):checked) .empty { display: none; }
+body:has(#festival option:not([value=""]):checked) .notes,
+body:has(#festival option:not([value=""]):checked) .editnote { display: block; }
+
+/* About text of the chosen festival */
+body:has(#festival option[value="diwali"]:checked) #about-diwali,
+body:has(#festival option[value="holi"]:checked) #about-holi,
+body:has(#festival option[value="rakhi"]:checked) #about-rakhi,
+body:has(#festival option[value="navratri"]:checked) #about-navratri,
+body:has(#festival option[value="dussehra"]:checked) #about-dussehra,
+body:has(#festival option[value="janmashtami"]:checked) #about-janmashtami,
+body:has(#festival option[value="durga"]:checked) #about-durga,
+body:has(#festival option[value="ganesh"]:checked) #about-ganesh,
+body:has(#festival option[value="lohri"]:checked) #about-lohri,
+body:has(#festival option[value="pongal"]:checked) #about-pongal,
+body:has(#festival option[value="onam"]:checked) #about-onam,
+body:has(#festival option[value="eidfitr"]:checked) #about-eidfitr,
+body:has(#festival option[value="eidadha"]:checked) #about-eidadha,
+body:has(#festival option[value="gurpurab"]:checked) #about-gurpurab,
+body:has(#festival option[value="baisakhi"]:checked) #about-baisakhi,
+body:has(#festival option[value="buddha"]:checked) #about-buddha,
+body:has(#festival option[value="mahavir"]:checked) #about-mahavir,
+body:has(#festival option[value="christmas"]:checked) #about-christmas,
+body:has(#festival option[value="easter"]:checked) #about-easter,
+body:has(#festival option[value="newyear"]:checked) #about-newyear,
+body:has(#festival option[value="independence"]:checked) #about-independence,
+body:has(#festival option[value="republic"]:checked) #about-republic { display: block; }
 
 /* ===== 7. Sidebar: select and about ===== */
 label { font-weight: bold; }
@@ -276,15 +342,18 @@ button:hover, .btn:hover { background-color: var(--brand-dark); border-color: va
 .save { background-color: #15803d; border-color: #15803d; }
 .save:hover { background-color: #116530; border-color: #116530; }
 
-/* ===== 9. Save bar (appears under the card after editing) ===== */
+/* ===== 9. Save bar (a details element, so it opens without JavaScript) ===== */
 .savebar {
+  max-width: var(--card-w);
+  margin: 16px auto 0;
+}
+
+.savebar summary {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
-  max-width: var(--card-w);
-  margin: 16px auto 0;
   padding: 12px 16px;
   background-color: #e8f7ee;
   border: 1.5px solid #15803d;
@@ -292,70 +361,76 @@ button:hover, .btn:hover { background-color: var(--brand-dark); border-color: va
   color: #14532d;
   font-size: 14px;
   font-weight: bold;
+  list-style: none;
+  cursor: pointer;
 }
 
-.savebar[hidden] { display: none; }
+.savebar summary::-webkit-details-marker { display: none; }
+.savebar summary:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+.savebar .when-open { display: none; }
+.savebar[open] .when-open { display: inline; }
+.savebar[open] .when-closed { display: none; }
 
 /* Keep the save bar visible while the card is on screen */
-.savebar { position: sticky; bottom: 12px; z-index: 5; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); }
+.savebar:not([open]) summary { position: sticky; bottom: 12px; z-index: 5; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); }
 
-/* Share buttons right after saving */
+/* Save and share options, shown after pressing Save card */
 .sharebar {
-  max-width: var(--card-w);
-  margin: 16px auto 0;
+  margin-top: 12px;
   padding: 14px 16px;
   background-color: var(--panel);
   border: 1.5px solid var(--brand);
   border-radius: 14px;
 }
 
-.sharebar[hidden] { display: none; }
-.sharebar strong { display: block; margin-bottom: 10px; }
+.sharebar strong { display: block; margin: 14px 0 6px; }
+.sharebar strong:first-child { margin-top: 0; }
+.sharebar .hint { margin: 0 0 8px; display: block; }
 
-.notes { max-width: var(--card-w); margin: 8px auto 0; }
+.sendbox, .linkbox {
+  display: block;
+  width: 100%;
+  margin: 0 0 10px;
+  padding: 10px 12px;
+  background-color: var(--field);
+  color: var(--ink);
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  font: inherit;
+  font-size: 15px;
+}
 
-/* ===== 10. Your Card (saved cards with share links) ===== */
-.yourcard { margin: 24px 0 0; }
-.yourcard[hidden] { display: none; }
-.saved-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 18px; }
-.saved-item { display: flex; flex-direction: column; gap: 8px; }
-.share-title { margin: 0; font-size: 14px; font-weight: bold; color: var(--muted); }
+.sendbox { resize: vertical; }
+
 .saved-actions { display: flex; flex-wrap: wrap; gap: 6px; }
 .saved-actions .btn, .saved-actions button { flex: 1 1 auto; padding: 5px 10px; font-size: 13px; }
 
-.face.mini {
-  display: flex;
-  max-width: none;
-  min-height: 290px;
-  padding: 34px 14px 38px;
-  gap: 8px;
-  border-width: 5px;
-}
+.notes { max-width: var(--card-w); margin: 8px auto 0; }
 
-.mini h3 { font-size: 22px; }
-.mini .to, .mini .msg { font-size: 14px; }
-.mini .from, .mini .note { font-size: 13px; }
-.mini .deco { font-size: 18px; animation: none; }
-
-/* Saved cards and shared links show the note without the dashed box */
-.mini .note, body.view-mode .note { min-height: 0; padding: 0; border: none; }
-.mini .note:empty, body.view-mode .note:empty { display: none; }
-
-/* ===== 11. Someone opens a shared link ===== */
+/* ===== 11. Someone opens a shared link such as ...#diwali ===== */
 .viewcta { display: none; max-width: var(--card-w); margin: 20px auto 0; text-align: center; }
 .viewcta p { margin: 0 0 10px; color: var(--muted); }
 .viewcta .btn { display: inline-block; }
 
-body.view-mode .side,
-body.view-mode .savebar,
-body.view-mode .sharebar,
-body.view-mode .notes,
-body.view-mode .yourcard,
-body.view-mode .empty { display: none; }
+body:has(.festival:target) .festival:target { display: block; }
+body:has(.festival:target) .festival:not(:target) { display: none !important; }
 
-body.view-mode .layout { grid-template-columns: 1fr; }
-body.view-mode .viewcta { display: block; }
-body.view-mode .face h3:hover, body.view-mode .face p:hover { outline: none; }
+body:has(.festival:target) .side,
+body:has(.festival:target) .savebar,
+body:has(.festival:target) .notes,
+body:has(.festival:target) .empty { display: none !important; }
+
+body:has(.festival:target) .layout { grid-template-columns: 1fr; }
+body:has(.festival:target) .viewcta { display: block; }
+body:has(.festival:target) .face textarea { pointer-events: none; outline: none; }
+body:has(.festival:target) .face textarea.note { min-height: 0; padding: 0; border: none; }
+body:has(.festival:target) .face textarea.note:placeholder-shown { display: none; }
+
+/* Old browsers without :has(): show every card so the page still works */
+@supports not selector(:has(*)) {
+  .festival { display: block; margin-bottom: 24px; }
+  .empty, .side { display: none; }
+}
 
 /* ===== 12. Small message ===== */
 .toast {
@@ -386,12 +461,13 @@ body.view-mode .face h3:hover, body.view-mode .face p:hover { outline: none; }
 
 /* ===== 14. Print: only the card ===== */
 @media print {
-  .site-header, .hero, .side, .savebar, .sharebar, .notes, .yourcard, .viewcta, .toast, .empty, footer { display: none !important; }
+  .site-header, .hero, .side, .savebar, .notes, .viewcta, .empty, footer { display: none !important; }
   .layout { display: block; }
   body { background: #ffffff; }
   main { margin: 0; }
   .deco { animation: none; }
-  .note { border: none; }
-  .note:empty { display: none; }
+  .face textarea { outline: none !important; }
+  .face textarea.note { border: none; padding: 0; min-height: 0; }
+  .face textarea.note:placeholder-shown { display: none; }
   .face { box-shadow: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
