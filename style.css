@@ -220,6 +220,7 @@ main {
 .face-easter       { --c1: #7c3aed; --c2: #db2777; --card-text: #ffffff; --accent: #fef3c7; }
 .face-newyear      { --c1: #0f172a; --c2: #1d4ed8; --card-text: #e0f2fe; --accent: #fde68a; }
 .face-independence { --c1: #ea580c; --c2: #15803d; --card-text: #ffffff; --accent: #ffffff; }
+.face-chhath       { --c1: #9a3412; --c2: #ca8a04; --card-text: #fffbeb; --accent: #fef08a; }
 .face-republic     { --c1: #1e3a8a; --c2: #ea580c; --card-text: #ffffff; --accent: #fef3c7; }
 
 /* Which card is visible? Only the chosen one (no JavaScript: select + :has) */
@@ -244,7 +245,8 @@ body:has(#festival option[value="christmas"]:checked) #christmas,
 body:has(#festival option[value="easter"]:checked) #easter,
 body:has(#festival option[value="newyear"]:checked) #newyear,
 body:has(#festival option[value="independence"]:checked) #independence,
-body:has(#festival option[value="republic"]:checked) #republic { display: block; }
+body:has(#festival option[value="republic"]:checked) #republic,
+body:has(#festival option[value="chhath"]:checked) #chhath { display: block; }
 
 /* ===== 6. Nothing chosen yet ===== */
 .empty {
@@ -289,7 +291,8 @@ body:has(#festival option[value="christmas"]:checked) #about-christmas,
 body:has(#festival option[value="easter"]:checked) #about-easter,
 body:has(#festival option[value="newyear"]:checked) #about-newyear,
 body:has(#festival option[value="independence"]:checked) #about-independence,
-body:has(#festival option[value="republic"]:checked) #about-republic { display: block; }
+body:has(#festival option[value="republic"]:checked) #about-republic,
+body:has(#festival option[value="chhath"]:checked) #about-chhath { display: block; }
 
 /* ===== 7. Sidebar: select and about ===== */
 label { font-weight: bold; }
