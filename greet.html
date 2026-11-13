@@ -31,6 +31,7 @@
     <label for="festival">1. Choose a festival</label>
     <select id="festival">
       <option value="" disabled>— Choose a festival —</option>
+      <option value="custom">✏️ Make your own card</option>
       <optgroup label="Hindu">
         <option value="diwali">Diwali</option>
         <option value="holi" selected>Holi</option>
@@ -71,7 +72,22 @@
     <p>🎊</p>
     <p>Select a festival and your greeting card will appear here.</p>
   </div>
+  <form id="custom" action="greetnav.html#custom" method="GET" style="--c:#6a1b9a">
+  <h2>Make Your Own Card</h2>
+  <div class="face">
+    <span class="deco d1">🎉</span><span class="deco d2">✨</span><span class="deco d3">🎉</span>
+    <textarea name="text" rows="9" aria-label="Card message">🎉 Your Title Here 🎉
 
+Dear Friend,
+Write your own wish here.
+
+With love, Your Name</textarea>
+  </div>
+  <label class="pick">Card colour
+    <input type="color" name="c" value="#6a1b9a" oninput="this.form.style.setProperty('--c',this.value)">
+  </label>
+  <button type="submit" class="save-btn">Save Card</button>
+</form>
   <form id="diwali" action="greetnav.html#diwali" method="GET" style="--c:#f57c00">
   <h2>Diwali</h2>
   <div class="face">
