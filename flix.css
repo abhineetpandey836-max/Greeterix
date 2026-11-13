@@ -1,4 +1,3 @@
-
 /* Colors & Base */
 :root {
   --main: #6a1b9a;
@@ -17,7 +16,6 @@ body {
   color: #333;
 }
 
-/* Simple Dark Navy Top Bar (Just like screenshot) */
 nav {
   background: #191233;
   color: white;
@@ -57,7 +55,6 @@ nav .nav-links a:hover {
   color: #ffb74d;
 }
 
-/* Hero Section (Deep purple to warm orange gradient from screenshot) */
 header {
   text-align: center;
   color: white;
@@ -78,7 +75,6 @@ header p {
   color: #f3e8ff;
 }
 
-/* Main Content */
 main {
   max-width: 540px;
   margin: -3.2rem auto 2rem;
@@ -179,7 +175,6 @@ textarea:focus {
   font-size: 0.9rem;
 }
 
-/* Save Button on greet.html */
 .save-btn {
   display: block;
   width: 100%;
@@ -198,7 +193,6 @@ textarea:focus {
   opacity: 0.9;
 }
 
-/* Compact Share Section at the bottom of greetnav.html */
 .share-section {
   margin: 1rem 0.4rem 0.4rem;
   padding-top: 0.9rem;
@@ -293,5 +287,3 @@ body:not(.saved-page):has(option[value=independence]:checked) #independence,
 body:not(.saved-page):has(option[value=republic]:checked) #republic {
   display: block;
 }
-.pick { display: flex; align-items: center; justify-content: space-between; margin-top: 1rem; }
-.pick input { width: 60px; height: 36px; padding: 0; border: 0; background: none; cursor: pointer; }
