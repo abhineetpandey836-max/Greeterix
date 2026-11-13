@@ -23,7 +23,7 @@ Live URL: [https://greetflix.vercel.app/]
 Festival Greeting Card Maker
 │
 ├── index.html     # All 23 festival cards, the dropdown, About notes and the Save/Share panel
-├── style.css      # All styling: variables, layout, card themes, :has()/:target logic, responsive and print rules
+├── style.css      
 └── README.md      # Project documentation
 ```
 ## Problem statement and Solution-
