@@ -5,8 +5,8 @@ Used - HTML and CSS only
 Team Name: G3
 Course Code: CSE326 (Internet Programming)
 
-|   |   Name           | Registration No. |
-|---|                  |                  |
+| # |   Name           | Registration No. |
+|---|---|---|
 | 1 | Abhineet Pandey  | 12617592 |
 | 2 | Shubham Kumar Chandravanshi | 12619844  |
 | 3 | Abhijit Kumar | 12619856 |
