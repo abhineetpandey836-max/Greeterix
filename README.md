@@ -15,7 +15,7 @@ Used - HTML and CSS only
 
 The site is deployed as a static site on Vercel, which is connected to this GitHub repository, so every push to the main branch redeploys automatically.
 
-Live URL: [https://greeting-card-maker-with-custom-sha.vercel.app/]
+Live URL: [https://greetflix.vercel.app/]
 
 ## 📁 Project Structure
 
