@@ -267,6 +267,7 @@ form:target {
 }
 
 /* Show selected festival on greet.html */
+body:not(.saved-page):has(option[value=custom]:checked) #custom,
 body:not(.saved-page):has(option[value=diwali]:checked) #diwali,
 body:not(.saved-page):has(option[value=holi]:checked) #holi,
 body:not(.saved-page):has(option[value=rakhi]:checked) #rakhi,
@@ -292,3 +293,5 @@ body:not(.saved-page):has(option[value=independence]:checked) #independence,
 body:not(.saved-page):has(option[value=republic]:checked) #republic {
   display: block;
 }
+.pick { display: flex; align-items: center; justify-content: space-between; margin-top: 1rem; }
+.pick input { width: 60px; height: 36px; padding: 0; border: 0; background: none; cursor: pointer; }
