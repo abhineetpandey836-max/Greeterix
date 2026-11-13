@@ -1,476 +1,68 @@
-/* ===== 1. CSS variables ===== */
+/* Colors (CSS variables) */
 :root {
-  --bg: #f6f2ea;
-  --panel: #ffffff;
-  --ink: #26233a;
-  --muted: #6c6882;
-  --brand: #d9480f;
-  --brand-dark: #a63a0c;
-  --navy: #1f1b4d;
-  --line: #e6dfd2;
-  --field: #fffdf8;
-  --soft: #fdeee4;
-  --radius: 16px;
-  --card-w: 460px;
+  --main: #6a1b9a;
+  --bg: #f6f1fb;
+  color-scheme: light;
 }
-
-/* ===== 2. Reset and base ===== */
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+body { margin: 0; font-family: "Nunito Sans", Arial, sans-serif; background: var(--bg); color: #333; }
 
-body {
-  margin: 0;
-  background-color: var(--bg);
-  color: var(--ink);
-  font-family: "Nunito Sans", Arial, sans-serif;
-  line-height: 1.6;
-}
+header { text-align: center; color: white; padding: 3rem 1rem;
+  background: linear-gradient(135deg, #ff9800, #e91e63, var(--main)); }
+header h1 { margin: 0 0 0.5rem; font: 2.4rem "Yatra One", Georgia, serif; }
+header p { margin: 0; font-size: 1.1rem; }
 
-h1, h2, h3 { font-family: "Yatra One", Georgia, serif; font-weight: normal; margin-top: 0; }
+main { max-width: 620px; margin: -1.5rem auto 2rem; padding: 0 1rem; }
+.box, form { background: white; padding: 1.5rem; margin-bottom: 1.5rem;
+  border-radius: 16px; box-shadow: 0 6px 18px #0002; }
+label { display: block; margin-bottom: 0.6rem; font-weight: bold; color: var(--main); }
+select { width: 100%; padding: 0.8rem; font-size: 1.05rem; border: 2px solid var(--main); border-radius: 10px; background: white; color: #333; }
+select:focus { outline: 3px solid #d9b8ee; }
+.empty { text-align: center; border: 2px dashed #bbb; box-shadow: none; font-size: 1.1rem; }
 
-a:focus-visible, button:focus-visible, select:focus-visible {
-  outline: 3px solid var(--brand);
-  outline-offset: 2px;
-}
+form { display: none; border-top: 8px solid var(--c); }   /* every card hidden at first */
+body:has(option:checked:not([disabled])) .empty { display: none; }
+h2 { margin: 0 0 1rem; font: 1.6rem "Yatra One", Georgia, serif; color: var(--c); }
 
-/* ===== 3. Header and banner ===== */
-.site-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 12px 32px;
-  background-color: var(--navy);
-}
+.face { position: relative; padding: 2.5rem 1rem 2rem; border-radius: 14px; overflow: hidden;
+  background: linear-gradient(135deg, var(--c), #1a1a2e); }
+.deco { position: absolute; font-size: 2rem; }
+.d1 { top: 8px; left: 12px; }
+.d2 { top: 8px; right: 12px; }
+.d3 { bottom: 8px; right: 12px; }
+textarea { display: block; width: 100%; padding: 0.5rem; font: 1.2rem/1.7 Georgia, serif; text-align: center;
+  color: white; background: transparent; border: 0; resize: none; }
+textarea:focus { outline: 2px dashed #fff9; }
 
-.brand { display: flex; flex-direction: column; text-decoration: none; }
+button { margin: 1rem 0.5rem 0 0; padding: 0.7rem 1.3rem; font-size: 1rem; font-weight: bold; color: white;
+  background: var(--c); border: 0; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+button:hover { opacity: 0.8; transform: translateY(-2px); }
+.about { margin: 1.2rem 0 0; padding: 0.8rem 1rem; background: #faf7fd; border-left: 5px solid var(--c); border-radius: 8px; font-size: 0.95rem; }
 
-.logo {
-  font-family: "Yatra One", Georgia, serif;
-  font-size: 26px;
-  line-height: 1.2;
-  color: #ffd166;
-  text-decoration: none;
-}
+footer { text-align: center; padding: 1rem; color: #777; }
+@media print { header, .box, button, .about, footer { display: none; } form { box-shadow: none; } }
 
-.tagline { font-size: 13px; font-style: italic; color: #e6e1ff; }
-
-.site-header nav a {
-  color: #ffffff;
-  text-decoration: none;
-  margin-left: 22px;
-  font-weight: bold;
-}
-
-.site-header nav a:hover { color: #ffd166; }
-
-.hero {
-  text-align: center;
-  padding: 44px 16px 64px;
-  color: #ffffff;
-  background: linear-gradient(135deg, var(--navy), #5b2a86 60%, #c2410c);
-}
-
-.hero h1 { font-size: 40px; margin-bottom: 8px; }
-.hero p { margin: 0 auto; max-width: 560px; color: #e6e1ff; }
-
-/* ===== 4. Main layout ===== */
-main {
-  max-width: 1080px;
-  margin: -34px auto 0;
-  padding: 0 16px 40px;
-}
-
-.panel {
-  background-color: var(--panel);
-  padding: 24px;
-  margin-bottom: 24px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: 0 4px 14px rgba(40, 30, 70, 0.08);
-}
-
-.panel h2 { font-size: 26px; margin-bottom: 4px; }
-.sub { color: var(--muted); margin: 0 0 18px; }
-.hint { font-size: 14px; color: var(--muted); margin: 10px 0 0; }
-.tight { margin: 0 0 8px; }
-
-.layout {
-  display: grid;
-  grid-template-columns: 360px 1fr;
-  gap: 24px;
-  align-items: start;
-}
-
-.stage { min-width: 0; }
-
-.side {
-  order: -1;
-  margin-bottom: 0;
-  position: sticky;
-  top: 16px;
-  max-height: calc(100vh - 32px);
-  overflow-y: auto;
-}
-
-/* ===== 5. Greeting cards ===== */
-.festival { display: none; }
-
-.face {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  position: relative;
-  overflow: hidden;
-  min-height: 470px;
-  max-width: var(--card-w);
-  margin: 0 auto;
-  padding: 46px 32px;
-  text-align: center;
-  color: var(--card-text);
-  background: linear-gradient(160deg, var(--c1), var(--c2));
-  border: 8px solid var(--accent);
-  border-radius: 20px;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.2);
-}
-
-.face::before {
-  content: "";
-  position: absolute;
-  inset: 8px;
-  border: 1.5px solid var(--accent);
-  border-radius: 12px;
-  opacity: 0.45;
-  pointer-events: none;
-}
-
-.face h3 { margin: 0; font-size: 36px; line-height: 1.2; color: var(--accent); }
-.face p { margin: 0; }
-.to { font-size: 18px; font-weight: bold; }
-.msg { font-family: "Yatra One", Georgia, serif; font-size: 21px; line-height: 1.5; }
-.from { font-style: italic; }
-
-/* The text on the card is made of textareas that look like plain text */
-.face textarea {
-  display: block;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  line-height: inherit;
-  text-align: center;
-  resize: none;
-  overflow: auto;
-  scrollbar-width: none;
-}
-
-@supports (field-sizing: content) {
-  .face textarea { field-sizing: content; overflow: hidden; }
-}
-
-.face textarea:hover, .face textarea:focus { outline: 2px dashed rgba(255, 255, 255, 0.7); outline-offset: 4px; }
-
-/* Personal note: written inside the card */
-.face textarea.note {
-  min-height: 44px;
-  padding: 8px 10px;
-  font-size: 16px;
-  font-style: italic;
-  border: 1.5px dashed currentColor;
-  border-radius: 10px;
-}
-
-.face textarea.note::placeholder { color: currentColor; opacity: 0.65; }
-
-.deco { position: absolute; font-size: 30px; animation: float 4s ease-in-out infinite; }
-.d1 { top: 18px; left: 22px; }
-.d2 { top: 18px; right: 22px; animation-delay: 1s; }
-.d3 { bottom: 18px; left: 50%; margin-left: -15px; animation-delay: 2s; }
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-/* Colours of each festival */
-.face-diwali       { --c1: #3b0f5c; --c2: #c2410c; --card-text: #fff3c4; --accent: #ffd166; }
-.face-holi         { --c1: #be185d; --c2: #6d28d9; --card-text: #ffffff; --accent: #ffd6e7; }
-.face-rakhi        { --c1: #9a3412; --c2: #be185d; --card-text: #fff7ed; --accent: #fcd34d; }
-.face-navratri     { --c1: #991b1b; --c2: #d97706; --card-text: #fff7ed; --accent: #fde68a; }
-.face-dussehra     { --c1: #7c2d12; --c2: #ea580c; --card-text: #fff7ed; --accent: #fde047; }
-.face-janmashtami  { --c1: #1e3a8a; --c2: #0e7490; --card-text: #ecfeff; --accent: #fde68a; }
-.face-durga        { --c1: #9f1239; --c2: #c2410c; --card-text: #fff1f2; --accent: #fecdd3; }
-.face-ganesh       { --c1: #b45309; --c2: #be123c; --card-text: #fffbeb; --accent: #fcd34d; }
-.face-lohri        { --c1: #7f1d1d; --c2: #f97316; --card-text: #fffbeb; --accent: #fed7aa; }
-.face-pongal       { --c1: #166534; --c2: #ca8a04; --card-text: #fefce8; --accent: #fef08a; }
-.face-onam         { --c1: #14532d; --c2: #b45309; --card-text: #fffbeb; --accent: #fde68a; }
-.face-eidfitr      { --c1: #064e3b; --c2: #0f766e; --card-text: #fef3c7; --accent: #fde68a; }
-.face-eidadha      { --c1: #134e4a; --c2: #1e3a8a; --card-text: #f0fdfa; --accent: #fde68a; }
-.face-gurpurab     { --c1: #1e3a8a; --c2: #d97706; --card-text: #ffffff; --accent: #ffedd5; }
-.face-baisakhi     { --c1: #a16207; --c2: #15803d; --card-text: #fffbeb; --accent: #fef08a; }
-.face-buddha       { --c1: #78350f; --c2: #a16207; --card-text: #fffbeb; --accent: #fde68a; }
-.face-mahavir      { --c1: #7c2d12; --c2: #be185d; --card-text: #fff7ed; --accent: #fed7aa; }
-.face-christmas    { --c1: #7f1d1d; --c2: #166534; --card-text: #ffffff; --accent: #fecaca; }
-.face-easter       { --c1: #7c3aed; --c2: #db2777; --card-text: #ffffff; --accent: #fef3c7; }
-.face-newyear      { --c1: #0f172a; --c2: #1d4ed8; --card-text: #e0f2fe; --accent: #fde68a; }
-.face-independence { --c1: #ea580c; --c2: #15803d; --card-text: #ffffff; --accent: #ffffff; }
-.face-chhath       { --c1: #9a3412; --c2: #ca8a04; --card-text: #fffbeb; --accent: #fef08a; }
-.face-republic     { --c1: #1e3a8a; --c2: #ea580c; --card-text: #ffffff; --accent: #fef3c7; }
-
-/* Which card is visible? Only the chosen one (no JavaScript: select + :has) */
-body:has(#festival option[value="diwali"]:checked) #diwali,
-body:has(#festival option[value="holi"]:checked) #holi,
-body:has(#festival option[value="rakhi"]:checked) #rakhi,
-body:has(#festival option[value="navratri"]:checked) #navratri,
-body:has(#festival option[value="dussehra"]:checked) #dussehra,
-body:has(#festival option[value="janmashtami"]:checked) #janmashtami,
-body:has(#festival option[value="durga"]:checked) #durga,
-body:has(#festival option[value="ganesh"]:checked) #ganesh,
-body:has(#festival option[value="lohri"]:checked) #lohri,
-body:has(#festival option[value="pongal"]:checked) #pongal,
-body:has(#festival option[value="onam"]:checked) #onam,
-body:has(#festival option[value="eidfitr"]:checked) #eidfitr,
-body:has(#festival option[value="eidadha"]:checked) #eidadha,
-body:has(#festival option[value="gurpurab"]:checked) #gurpurab,
-body:has(#festival option[value="baisakhi"]:checked) #baisakhi,
-body:has(#festival option[value="buddha"]:checked) #buddha,
-body:has(#festival option[value="mahavir"]:checked) #mahavir,
-body:has(#festival option[value="christmas"]:checked) #christmas,
-body:has(#festival option[value="easter"]:checked) #easter,
-body:has(#festival option[value="newyear"]:checked) #newyear,
-body:has(#festival option[value="independence"]:checked) #independence,
-body:has(#festival option[value="republic"]:checked) #republic,
-body:has(#festival option[value="chhath"]:checked) #chhath { display: block; }
-
-/* ===== 6. Nothing chosen yet ===== */
-.empty {
-  max-width: var(--card-w);
-  margin: 0 auto;
-  padding: 70px 24px;
-  text-align: center;
-  background-color: var(--panel);
-  border: 2px dashed var(--brand);
-  border-radius: 20px;
-}
-
-.empty .big { font-size: 54px; }
-.empty h2 { margin-bottom: 6px; }
-.empty p { margin: 0; color: var(--muted); }
-
-.about, .notes, .editnote { display: none; }
-
-body:has(#festival option:not([value=""]):checked) .empty { display: none; }
-body:has(#festival option:not([value=""]):checked) .notes,
-body:has(#festival option:not([value=""]):checked) .editnote { display: block; }
-
-/* About text of the chosen festival */
-body:has(#festival option[value="diwali"]:checked) #about-diwali,
-body:has(#festival option[value="holi"]:checked) #about-holi,
-body:has(#festival option[value="rakhi"]:checked) #about-rakhi,
-body:has(#festival option[value="navratri"]:checked) #about-navratri,
-body:has(#festival option[value="dussehra"]:checked) #about-dussehra,
-body:has(#festival option[value="janmashtami"]:checked) #about-janmashtami,
-body:has(#festival option[value="durga"]:checked) #about-durga,
-body:has(#festival option[value="ganesh"]:checked) #about-ganesh,
-body:has(#festival option[value="lohri"]:checked) #about-lohri,
-body:has(#festival option[value="pongal"]:checked) #about-pongal,
-body:has(#festival option[value="onam"]:checked) #about-onam,
-body:has(#festival option[value="eidfitr"]:checked) #about-eidfitr,
-body:has(#festival option[value="eidadha"]:checked) #about-eidadha,
-body:has(#festival option[value="gurpurab"]:checked) #about-gurpurab,
-body:has(#festival option[value="baisakhi"]:checked) #about-baisakhi,
-body:has(#festival option[value="buddha"]:checked) #about-buddha,
-body:has(#festival option[value="mahavir"]:checked) #about-mahavir,
-body:has(#festival option[value="christmas"]:checked) #about-christmas,
-body:has(#festival option[value="easter"]:checked) #about-easter,
-body:has(#festival option[value="newyear"]:checked) #about-newyear,
-body:has(#festival option[value="independence"]:checked) #about-independence,
-body:has(#festival option[value="republic"]:checked) #about-republic,
-body:has(#festival option[value="chhath"]:checked) #about-chhath { display: block; }
-
-/* ===== 7. Sidebar: select and about ===== */
-label { font-weight: bold; }
-
-select {
-  display: block;
-  width: 100%;
-  margin: 6px 0 14px;
-  padding: 10px 12px;
-  background-color: var(--field);
-  color: var(--ink);
-  border: 1.5px solid var(--line);
-  border-radius: 10px;
-  font-size: 16px;
-  font-family: inherit;
-}
-
-.about {
-  margin-bottom: 20px;
-  padding: 12px 14px;
-  background-color: var(--soft);
-  border-left: 5px solid var(--brand);
-  border-radius: 10px;
-}
-
-.about strong { color: var(--brand-dark); }
-.about p { margin: 4px 0 0; font-size: 14px; }
-
-/* ===== 8. Buttons ===== */
-button, .btn {
-  display: block;
-  padding: 10px 20px;
-  background-color: var(--brand);
-  color: #ffffff;
-  border: 2px solid var(--brand);
-  border-radius: 30px;
-  font-size: 15px;
-  font-weight: bold;
-  font-family: inherit;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-button:hover, .btn:hover { background-color: var(--brand-dark); border-color: var(--brand-dark); }
-.ghost { background-color: transparent; color: var(--brand); }
-.ghost:hover { color: #ffffff; }
-
-.save { background-color: #15803d; border-color: #15803d; }
-.save:hover { background-color: #116530; border-color: #116530; }
-
-/* ===== 9. Save bar (a details element, so it opens without JavaScript) ===== */
-.savebar {
-  max-width: var(--card-w);
-  margin: 16px auto 0;
-}
-
-.savebar summary {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  padding: 12px 16px;
-  background-color: #e8f7ee;
-  border: 1.5px solid #15803d;
-  border-radius: 14px;
-  color: #14532d;
-  font-size: 14px;
-  font-weight: bold;
-  list-style: none;
-  cursor: pointer;
-}
-
-.savebar summary::-webkit-details-marker { display: none; }
-.savebar summary:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
-.savebar .when-open { display: none; }
-.savebar[open] .when-open { display: inline; }
-.savebar[open] .when-closed { display: none; }
-
-/* Keep the save bar visible while the card is on screen */
-.savebar:not([open]) summary { position: sticky; bottom: 12px; z-index: 5; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); }
-
-/* Save and share options, shown after pressing Save card */
-.sharebar {
-  margin-top: 12px;
-  padding: 14px 16px;
-  background-color: var(--panel);
-  border: 1.5px solid var(--brand);
-  border-radius: 14px;
-}
-
-.sharebar strong { display: block; margin: 14px 0 6px; }
-.sharebar strong:first-child { margin-top: 0; }
-.sharebar .hint { margin: 0 0 8px; display: block; }
-
-.sendbox, .linkbox {
-  display: block;
-  width: 100%;
-  margin: 0 0 10px;
-  padding: 10px 12px;
-  background-color: var(--field);
-  color: var(--ink);
-  border: 1.5px solid var(--line);
-  border-radius: 10px;
-  font: inherit;
-  font-size: 15px;
-}
-
-.sendbox { resize: vertical; }
-
-.saved-actions { display: flex; flex-wrap: wrap; gap: 6px; }
-.saved-actions .btn, .saved-actions button { flex: 1 1 auto; padding: 5px 10px; font-size: 13px; }
-
-.notes { max-width: var(--card-w); margin: 8px auto 0; }
-
-/* ===== 11. Someone opens a shared link such as ...#diwali ===== */
-.viewcta { display: none; max-width: var(--card-w); margin: 20px auto 0; text-align: center; }
-.viewcta p { margin: 0 0 10px; color: var(--muted); }
-.viewcta .btn { display: inline-block; }
-
-body:has(.festival:target) .festival:target { display: block; }
-body:has(.festival:target) .festival:not(:target) { display: none !important; }
-
-body:has(.festival:target) .side,
-body:has(.festival:target) .savebar,
-body:has(.festival:target) .notes,
-body:has(.festival:target) .empty { display: none !important; }
-
-body:has(.festival:target) .layout { grid-template-columns: 1fr; }
-body:has(.festival:target) .viewcta { display: block; }
-body:has(.festival:target) .face textarea { pointer-events: none; outline: none; }
-body:has(.festival:target) .face textarea.note { min-height: 0; padding: 0; border: none; }
-body:has(.festival:target) .face textarea.note:placeholder-shown { display: none; }
-
-/* Old browsers without :has(): show every card so the page still works */
-@supports not selector(:has(*)) {
-  .festival { display: block; margin-bottom: 24px; }
-  .empty, .side { display: none; }
-}
-
-/* ===== 12. Small message ===== */
-.toast {
-  position: fixed;
-  left: 50%;
-  bottom: 24px;
-  z-index: 30;
-  transform: translate(-50%, 20px);
-  padding: 10px 18px;
-  border-radius: 24px;
-  background-color: #1f1b4d;
-  color: #ffffff;
-  font-size: 14px;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s;
-}
-
-.toast.show { opacity: 1; transform: translate(-50%, 0); }
-
-/* ===== 13. Responsive design ===== */
-@media (max-width: 900px) {
-  .layout { grid-template-columns: 1fr; }
-  .side { position: static; max-height: none; }
-  .hero h1 { font-size: 28px; }
-  .site-header { padding: 12px 16px; }
-}
-
-/* ===== 14. Print: only the card ===== */
-@media print {
-  .site-header, .hero, .side, .savebar, .notes, .viewcta, .empty, footer { display: none !important; }
-  .layout { display: block; }
-  body { background: #ffffff; }
-  main { margin: 0; }
-  .deco { animation: none; }
-  .face textarea { outline: none !important; }
-  .face textarea.note { border: none; padding: 0; min-height: 0; }
-  .face textarea.note:placeholder-shown { display: none; }
-  .face { box-shadow: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-}
+/* show only the festival selected in the dropdown */
+body:has(option[value=diwali]:checked) #diwali,
+body:has(option[value=holi]:checked) #holi,
+body:has(option[value=rakhi]:checked) #rakhi,
+body:has(option[value=navratri]:checked) #navratri,
+body:has(option[value=dussehra]:checked) #dussehra,
+body:has(option[value=janmashtami]:checked) #janmashtami,
+body:has(option[value=durga]:checked) #durga,
+body:has(option[value=ganesh]:checked) #ganesh,
+body:has(option[value=lohri]:checked) #lohri,
+body:has(option[value=pongal]:checked) #pongal,
+body:has(option[value=onam]:checked) #onam,
+body:has(option[value=chhath]:checked) #chhath,
+body:has(option[value=eidfitr]:checked) #eidfitr,
+body:has(option[value=eidadha]:checked) #eidadha,
+body:has(option[value=gurpurab]:checked) #gurpurab,
+body:has(option[value=baisakhi]:checked) #baisakhi,
+body:has(option[value=buddha]:checked) #buddha,
+body:has(option[value=mahavir]:checked) #mahavir,
+body:has(option[value=christmas]:checked) #christmas,
+body:has(option[value=easter]:checked) #easter,
+body:has(option[value=newyear]:checked) #newyear,
+body:has(option[value=independence]:checked) #independence,
+body:has(option[value=republic]:checked) #republic { display: block; }
