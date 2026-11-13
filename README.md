@@ -19,12 +19,13 @@ Live URL: [https://greeting-card-maker-with-custom-sha.vercel.app/]
 
 ## 📁 Project Structure
 
+```
 Festival Greeting Card Maker
 │
 ├── index.html     # All 23 festival cards, the dropdown, About notes and the Save/Share panel
 ├── style.css      # All styling: variables, layout, card themes, :has()/:target logic, responsive and print rules
 └── README.md      # Project documentation
-
+```
 ## Problem statement and Solution-
 India celebrates a huge number of festivals across many religions and regions, and people love sending wishes on each of them. Most of what gets forwarded is a generic image or a copied message, and it often feels impersonal. Many existing card makers also need sign ups, install an app, or place a watermark on the card.
 
